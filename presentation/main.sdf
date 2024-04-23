@@ -4,73 +4,16 @@ custom_css: custom.css
 
 # 🐋 Simplifiez la conteneurisation de vos idées !
 
-// Attention à la présentation (éviter de se présenter en tant que CTO pour pas que ça soit pris comme un produit qu'on veut vendre)
+/*
+Attention à la présentation (éviter de se présenter en tant que CTO pour pas que ça soit pris comme un produit qu'on veut vendre)
+*/
 
-## Problèmes avec les Dockerfile (2 min)
+!include(intro.sdf)
 
-// En tant que dev, on a beaucoup de sujets à traîter, les tests, la sécurité, la performance, la lisibilité, la maintenabilité, etc. Et on a pas forcément envie de passer du temps à apprendre un nouveau langage pour faire de la conteneurisation.
+//@ < 03:00
 
-// Poser des questions (Qui connait le principe des layers ? Qui a déjà eu des problèmes de cache ? Qui a déjà eu des problèmes de sécurité ?)
+!include(demo.sdf)
 
-- Nouveau "langage" à apprendre + j'ai trouvé ça repoussant en débutant
-- Il est compliqué de modifier un Dockerfile via un script
-- Les Dockerfile sont souvent longs et complexes
--- concept des layers pas forcément évident + pas toujours facile de comprendre pourquoi si on met une commande avant une autre ça build plus
--- système de builders pas toujours bien compris + pourquoi je ne fais pas tout dans la même image ? Combien de fois je commence à lire un Dockerfile et je me rends compte après coup, que je suis passé à côté d'un petit `FROM`...
-- Pas de "bonnes pratiques" évidentes de base
--- La plus part des images sur Dockerhub sont en root par défaut + pas toujours simple pour les rendre compatibles rootless
--- Les .gitingore fonctionnent à l'inverse je trouve (on doit exclure ce qu'on ne veut pas plutôt qu'inclure ce que l'on veut) et ils ne sont pas toujours définis
+//@ < 10:00
 
-## Comment Dofigen tente de répondre à ces Problèmes (1 min)
-
-// La nuance du mot "tente" attire la bienveillance du public
-
-- Définition de la configuration dans un fichier YAML (ou JSON, mais je suis moins fan)
--- Plus simple à lire et à écrire
--- Plus facile à modifier via un script (yq, jq, ...)
--- On peu éviter les duplications via les ancres YAML
-- Abstraction du concept de layers
--- On peut mettre les commandes dans l'ordre que l'on veut, elles seront toujours placées dans le bon ordre dans le Dockerfile
--- Gestion de cache plus simple pour que les layers soient moins dépendants les uns des autres
-- Séparation des builders dans un champ spécifique
--- Plus facile de voir quand il y en a
--- chaque builder est indépendant, on peut les réutiliser dans d'autres images
-- Bonnes pratiques par défaut
--- Les images sont en rootless par défaut
--- Les fichiers `.gitignore` sont inclus dans le même fichier
-
-## Démonstration (10 min)
-
-A chaque étape (ou à la fin de la démonstration), montrer la taille de l'image, le temps de build, le nombre de layers, la gestion du cache, les failles de sécurité (comment ?)
-
-### On part d'un Dockerfile pour build une image Spring Boot (lourde, prend du temps à build et a de grosses failles de sécurité [voir Docker benchmark])
-
-```YAML
-
-```
-
-### On va le transformer en Dofigen
-
-### On rajoute un builder pour séparer la compilation de l'exécution
-
-### On rajoute le gitignore
-
-### On rajoute du cache dans le builder
-
-### On rajoute un builder pour le test ?
-
-
-
-## Conclusion (2 min)
-
-### Benchmark
- 
-### Pousser plus loin
-
-Fonctionnalités envisagées pour Dofigen:
-- Offrire plus de possibilités à l'ajout des fichiers [#136](https://github.com/lenra-io/dofigen/issues/136)
-- Générer le Dockerignore par inclusion, plutôt qu'exclusion (en complément) [#174](https://github.com/lenra-io/dofigen/issues/174)
-- Faire un fichier de lock pour garder les versions des images pour toujours regénérer la même image (ou le faire dans le Dockerfile ?)
-- ...
-
-En tant que CI
+!include(conclusion.sdf)

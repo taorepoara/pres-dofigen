@@ -12,6 +12,4 @@ Problèmes:
 
 Du mieux:
 - Utilisateur non-root
-- On gagne 1s de build
 - On gagne 20M sur l'image
-- On 
