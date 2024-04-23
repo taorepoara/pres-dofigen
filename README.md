@@ -35,3 +35,13 @@ En suivant cette doc:
 ```console
 ./mvnw spring-boot:run
 ```
+
+
+## Les tests
+
+```console
+export num=0
+./build.sh
+docker run --rm -it -p 8080:8080 devquest-${num}
+./stats.sh
+```
