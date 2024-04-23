@@ -45,3 +45,9 @@ export num=0
 docker run --rm -it -p 8080:8080 devquest-${num}
 ./stats.sh
 ```
+
+## La présentation
+
+```console
+bunx slidesk presentation
+```

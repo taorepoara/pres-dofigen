@@ -1,0 +1,74 @@
+## Démonstration
+
+/*
+A chaque étape (ou à la fin de la démonstration), montrer la taille de l'image, le temps de build, le nombre de layers, la gestion du cache, les failles de sécurité (comment ?)
+*/
+
+Comprendre par l'exemple
+
+## v0: Le Dockerfile à ne pas faire
+
+- Métriques
+-- Temps de build initial: **2s**
+-- Temps de re-build: **équivalent**
+-- Taille de l'image: **427M**
+-- Utilisateur: **root**
+- Problèmes:
+-- Téléchargement des dépendances au démarrage
+-- Image lourde
+-- Contient le JDK (failles de sécurité)
+
+## v1: Le Dockerfile de base
+
+- Métriques
+-- Temps de build initial: **13s**
+-- Temps de re-build: **équivalent**
+-- Taille de l'image: **541M**
+-- Utilisateur: **root**
+- Problèmes:
+-- Image lourde
+-- Contient le JDK (failles de sécurité)
+-- Chargement des dépendances à chaque build
+- Du mieux:
+-- Amélioration du temps de démarrage
+-- Le serveur n'a pas besoin d'accès internet
+
+## v2: Tranformation pour Dofigen
+
+- Métriques
+-- Temps de build initial: **13s**
+-- Temps de re-build: **équivalent**
+-- Taille de l'image: **521M**
+-- Utilisateur: **1000**
+- Problèmes:
+-- Image lourde
+-- Contient le JDK (failles de sécurité)
+-- Chargement des dépendances à chaque build
+- Du mieux:
+-- Utilisateur non-root
+-- On gagne 20M sur l'image (je ne sais pas pourquoi)
+
+## v3: Optimiser la taille de l'image
+
+- Métriques
+-- Temps de build initial: **13s**
+-- Temps de re-build: **équivalent**
+-- Taille de l'image: **185M**
+-- Utilisateur: **1000**
+- Problèmes:
+-- Chargement des dépendances à chaque build
+- Du mieux:
+-- Taille de l'image divisée par 3,5
+-- Plus de JDK dans l'image finale
+
+## v4: Gestion du cache
+
+- Métriques
+-- Temps de build initial: **13s**
+-- Temps de re-build: **6s**
+-- Taille de l'image: **185M**
+-- Utilisateur: **1000**
+- Du mieux:
+-- Chargement des dépendances une fois
+-- Le temps de build est divisé par deux
+

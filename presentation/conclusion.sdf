@@ -1,0 +1,14 @@
+## Benchmark
+
+Tableau avec les différentes versions et les différentes métriques
+ 
+## Pousser plus loin
+
+Fonctionnalités envisagées pour Dofigen:
+
+- Offrire plus de possibilités à l'ajout des fichiers (__lenra-io/dofigen/issues/136__)
+- Générer le Dockerignore par inclusion, plutôt qu'exclusion (__lenra-io/dofigen/issues/174__)
+- Faire un fichier de lock pour garder les versions des images pour toujours regénérer la même image (ou le faire dans le Dockerfile ?)
+- ...
+
+En tant que CI

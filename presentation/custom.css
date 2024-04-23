@@ -1,17 +1,16 @@
 
 :root {
-  --sd-heading1-size: 8.5vw;
-  --sd-heading1-line-height: 1;
-  --sd-heading2-size: 5vw;
+  --sd-heading1-size: 5vw;
+  --sd-heading1-line-height: 1.2;
+  --sd-heading2-size: 3vw;
   --sd-heading2-line-height: 1;
   --sd-text-size: 2.2vw;
   --sd-text-line-height: 1.2;
 
-  --sd-background-color: #242424;
-  --sd-heading-color: rgba(255, 255, 255, 0.97);
-  --sd-text-color: rgba(255, 255, 255, 0.87);
-  --sd-primary-color: rgb(37, 186, 146);
-
+  --sd-background-color: rgb(30, 35, 44);
+  --sd-heading-color: rgba(255, 255, 255);
+  --sd-text-color: rgba(255, 255, 255);
+  --sd-primary-color: rgb(18, 105, 237);
 
   /* SpeakerView */
   --sd-sv-timer-size: 80px;
@@ -19,4 +18,15 @@
   --sd-sv-text-line-height: 1.2;
   --sd-sv-background-color: #242424;
   --sd-sv-text-color: rgba(255, 255, 255, 0.87);
+}
+
+.sd-app::after {
+  content: "";
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.5vw;
+  background-image: linear-gradient(to right, rgb(87, 192, 179), rgb(87, 192, 179) 25%, rgb(246, 194, 139) 25%, rgb(246, 194, 139) 50%, rgb(242, 122, 134) 50%, rgb(242, 122, 134) 75%, rgb(112, 203, 242) 75%, rgb(112, 203, 242))
 }
