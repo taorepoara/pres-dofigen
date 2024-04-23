@@ -1,3 +1,32 @@
+
+
+## Getting started
+
+
+### La présentation
+
+```console
+bunx slidesk presentation
+```
+
+### Les tests
+
+```console
+export num=0
+./build.sh
+docker run --rm -it -p 8080:8080 devquest-${num}
+./stats.sh
+```
+
+### lancer le projet en local
+
+```console
+./mvnw spring-boot:run
+```
+
+
+## Notes
+
 Ce coaching serait réussi si:
 - Je n'ai pas peur d'être ridicule de ma présentation (peur de que des personnes plus techiniques que moi me jugent)
   - S'il voient la valeur de l'outil, ils vont voir l'intérêt
@@ -29,25 +58,3 @@ En suivant cette doc: https://spring.io/guides/gs/rest-service
 Création d'un projet généré avec [Spring Initializr](https://start.spring.io/) (Maven, Spring Boot 2.5.4, Jar, Java 17, Spring Web)
 
 En suivant cette doc: 
-
-## Getting started
-
-```console
-./mvnw spring-boot:run
-```
-
-
-## Les tests
-
-```console
-export num=0
-./build.sh
-docker run --rm -it -p 8080:8080 devquest-${num}
-./stats.sh
-```
-
-## La présentation
-
-```console
-bunx slidesk presentation
-```
