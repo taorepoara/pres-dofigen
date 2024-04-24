@@ -1,0 +1,16 @@
+{
+  "addScripts": ["./plugins/xterm/xterm.lib.js", "./plugins/xterm/xterm.js"],
+  "addStyles": ["./plugins/xterm/xterm.lib.css", "./plugins/xterm/xterm.css"],
+  "addWS": "./plugins/xterm/xterm.ws.mjs",
+  "onSlideChange": "window.slidesk.manageXTerm();",
+  "addSpeakerScripts": [
+    "./plugins/xterm/xterm.lib.js",
+    "./plugins/xterm/xterm.js"
+  ],
+  "addSpeakerStyles": [
+    "./plugins/xterm/xterm.lib.css",
+    "./plugins/xterm/xterm.notes.css",
+    "./plugins/xterm/xterm.css"
+  ],
+  "onSpeakerViewSlideChange": "window.slidesk.manageXTermNotes();"
+}
