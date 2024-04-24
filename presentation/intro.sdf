@@ -13,26 +13,26 @@ Poser des questions (Qui connait le principe des layers ? Qui a déjà eu des pr
 - Nouveau "langage" à apprendre + j'ai trouvé ça repoussant en débutant
 - Il est compliqué de modifier un Dockerfile via un script
 - Les Dockerfile sont souvent longs et complexes
--- concept des layers pas forcément évident + pas toujours facile de comprendre pourquoi si on met une commande avant une autre ça build plus
--- système de builders pas toujours bien compris + pourquoi je ne fais pas tout dans la même image ? Combien de fois je commence à lire un Dockerfile et je me rends compte après coup, que je suis passé à côté d'un petit `FROM`...
+  - concept des layers pas forcément évident + pas toujours facile de comprendre pourquoi si on met une commande avant une autre ça build plus
+  - système de builders pas toujours bien compris + pourquoi je ne fais pas tout dans la même image ? Combien de fois je commence à lire un Dockerfile et je me rends compte après coup, que je suis passé à côté d'un petit `FROM`...
 - Pas de "bonnes pratiques" évidentes de base
--- La plus part des images sur Dockerhub sont en root par défaut + pas toujours simple pour les rendre compatibles rootless
--- Les .gitingore fonctionnent à l'inverse je trouve (on doit exclure ce qu'on ne veut pas plutôt qu'inclure ce que l'on veut) et ils ne sont pas toujours définis
+  - La plus part des images sur Dockerhub sont en root par défaut + pas toujours simple pour les rendre compatibles rootless
+  - Les .gitingore fonctionnent à l'inverse je trouve (on doit exclure ce qu'on ne veut pas plutôt qu'inclure ce que l'on veut) et ils ne sont pas toujours définis
 
 ## Comment Dofigen tente de répondre à ces Problèmes
 
 // La nuance du mot "tente" attire la bienveillance du public
 
 - Définition de la configuration dans un fichier YAML (ou JSON, mais je suis moins fan)
--- Plus simple à lire et à écrire
--- Plus facile à modifier via un script (yq, jq, ...)
--- On peu éviter les duplications via les ancres YAML
+  - Plus simple à lire et à écrire
+  - Plus facile à modifier via un script (yq, jq, ...)
+  - On peu éviter les duplications via les ancres YAML
 - Abstraction du concept de layers
--- On peut mettre les commandes dans l'ordre que l'on veut, elles seront toujours placées dans le bon ordre dans le Dockerfile
--- Gestion de cache plus simple pour que les layers soient moins dépendants les uns des autres
+  - On peut mettre les commandes dans l'ordre que l'on veut, elles seront toujours placées dans le bon ordre dans le Dockerfile
+  - Gestion de cache plus simple pour que les layers soient moins dépendants les uns des autres
 - Séparation des builders dans un champ spécifique
--- Plus facile de voir quand il y en a
--- chaque builder est indépendant, on peut les réutiliser dans d'autres images
+  - Plus facile de voir quand il y en a
+  - chaque builder est indépendant, on peut les réutiliser dans d'autres images
 - Bonnes pratiques par défaut
--- Les images sont en rootless par défaut
--- Les fichiers `.gitignore` sont inclus dans le même fichier
+  - Les images sont en rootless par défaut
+  - Les fichiers `.gitignore` sont inclus dans le même fichier

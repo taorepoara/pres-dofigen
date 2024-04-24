@@ -30,3 +30,12 @@
   height: 0.5vw;
   background-image: linear-gradient(to right, rgb(87, 192, 179), rgb(87, 192, 179) 25%, rgb(246, 194, 139) 25%, rgb(246, 194, 139) 50%, rgb(242, 122, 134) 50%, rgb(242, 122, 134) 75%, rgb(112, 203, 242) 75%, rgb(112, 203, 242))
 }
+
+.sbs .step {
+  transform: translate(0, 1vw);
+  transition-property: opacity, transform;
+
+  &.step-shown {
+    transform: translate(0, 0);
+  }
+}
