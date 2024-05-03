@@ -76,3 +76,25 @@ En suivant cette doc: https://spring.io/guides/gs/rest-service
 Création d'un projet généré avec [Spring Initializr](https://start.spring.io/) (Maven, Spring Boot 2.5.4, Jar, Java 17, Spring Web)
 
 En suivant cette doc: 
+
+
+
+## Debreifing
+
+Pour les problématiques, séparer en trois slides (une slide par problématique) et pour chaque problématique, mettre une image en face pour illustrer le problème.
+
+4 min pour l'intro
+
+Faire des alias shell pour les commandes plutôt que de les écrire à chaque fois un seul script qui fait tout.
+
+Expliciter le nombre des dépendances et leur poid.
+
+Pour l'URL faire un curl ou un lien vers la page
+
+Pour la v1 (et chaque version suivante):
+ faire un highlight les différences dans le code
+ ne pas expliciter les métriques et les problèmes, mais juste dire qu'il n'y a pas de surprise/changement et plus insiter sur les avantages
+
+
+Faire que Dofigen ajoute un commentaire dans le Dockerfile pour dire que c'est généré par Dofigen avec la version
+
