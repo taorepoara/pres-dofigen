@@ -1,14 +1,23 @@
+
 ## Benchmark
 
-Tableau avec les différentes versions et les différentes métriques
+| Démo       | Taille image      | Temps build    | Temps re-build    | Utilisateur |
+|------------|-------------------|----------------|-------------------|-------------|
+| v0 🛑      | 427M              | 1s             | équivalent        | root        |
+| v1 Base    | 541M              | 20s            | équivalent        | root        |
+| v2 Dofigen | 521M              | 20s            | équivalent        | 1000        |
+| v3 Builder | 185M              | 20s            | équivalent        | 1000        |
+| v4 Cache   | 185M              | 20s            | 5s                | 1000        |
+
  
-## Pousser plus loin
+## Fonctionnalités envisagées
 
-Fonctionnalités envisagées pour Dofigen:
+- Offrire plus de configuration à l'ajout des fichiers ([136](https://github.com/lenra-io/dofigen/issues/136))
+- Inclure des fichiers Dofigen externes ([180](https://github.com/lenra-io/dofigen/issues/180))
+- Générer un fichier de lock
 
-- Offrire plus de possibilités à l'ajout des fichiers (__lenra-io/dofigen/issues/136__)
-- Générer le Dockerignore par inclusion, plutôt qu'exclusion (__lenra-io/dofigen/issues/174__)
-- Faire un fichier de lock pour garder les versions des images pour toujours regénérer la même image (ou le faire dans le Dockerfile ?)
-- ...
+## Merci !
 
-En tant que CI
+@taorepoara - Thomas DA ROCHA - CTO de Lenra
+
+[github.com/lenra-io/dofigen](https://github.com/lenra-io/dofigen)
