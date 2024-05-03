@@ -1,38 +1,57 @@
 
-## Problèmes avec les Dockerfile
+## 🤔 Problèmes avec les Dockerfile .[steps]
 
 /*
 En tant que dev, on a beaucoup de sujets à traîter, les tests, la sécurité, la performance, la lisibilité, la maintenabilité, etc.
-Et on a pas forcément envie de passer du temps à apprendre un nouveau langage pour faire de la conteneurisation.
+Et on a pas forcément envie de passer du temps à comprendre comment fonctionne la création de conteneurs pour déployer nos projets.
+J'ai créé Dofigen pour essayer de simplifier la création de Dockerfile et de rendre cette tâche plus accessible.
 */
 
 /*
-Poser des questions (Qui connait le principe des layers ? Qui a déjà eu des problèmes de cache ? Qui a déjà eu des problèmes de sécurité ?)
+Petit sondage:
+qui est dev ?
+parmi vous, qui a déjà utilisé écrit un Dockerfile ?
+qui comprends le principe des layers ?
+qui sait comment fonctionne le cache de build ?
 */
 
-- Nouveau "langage" à apprendre + j'ai trouvé ça repoussant en débutant
-- Il est compliqué de modifier un Dockerfile via un script
-- Les Dockerfile sont souvent longs et complexes
+/*
+- langage: j'ai trouvé ça repoussant en débutant, on dirait du Cobol
+- syntaxe: il est compliqué d'analyser ou de modifier un Dockerfile via un script
+- Dockerfile longs: 
   - concept des layers pas forcément évident + pas toujours facile de comprendre pourquoi si on met une commande avant une autre ça build plus
   - système de builders pas toujours bien compris + pourquoi je ne fais pas tout dans la même image ? Combien de fois je commence à lire un Dockerfile et je me rends compte après coup, que je suis passé à côté d'un petit `FROM`...
+- bonnes pratiques:
+  - la plus part des images sur Dockerhub sont en root par défaut + pas toujours simple pour les rendre compatibles rootless
+  - les .gitingore fonctionnent à l'inverse je trouve (on doit exclure ce qu'on ne veut pas plutôt qu'inclure ce que l'on veut) et ils ne sont pas toujours définis
+*/
+
+- Nouveau "langage" à apprendre
+- Une syntaxe en commandes
+- Les Dockerfile sont souvent longs et complexes
 - Pas de "bonnes pratiques" évidentes de base
-  - La plus part des images sur Dockerhub sont en root par défaut + pas toujours simple pour les rendre compatibles rootless
-  - Les .gitingore fonctionnent à l'inverse je trouve (on doit exclure ce qu'on ne veut pas plutôt qu'inclure ce que l'on veut) et ils ne sont pas toujours définis
 
-## Comment Dofigen tente de répondre à ces Problèmes
+## Comment Dofigen tente de répondre à ces problèmes .[steps]
 
-// La nuance du mot "tente" attire la bienveillance du public
+/*
+Dofigen est un outil qui permet de générer des Dockerfile.
 
-- Définition de la configuration dans un fichier YAML (ou JSON, mais je suis moins fan)
-  - Plus simple à lire et à écrire
+- yaml:
+  - plus simple à lire et à écrire
   - Plus facile à modifier via un script (yq, jq, ...)
   - On peu éviter les duplications via les ancres YAML
-- Abstraction du concept de layers
-  - On peut mettre les commandes dans l'ordre que l'on veut, elles seront toujours placées dans le bon ordre dans le Dockerfile
+- layers:
+  - l'ordre des définitions n'a pas d'importance (dans un même niveau)
   - Gestion de cache plus simple pour que les layers soient moins dépendants les uns des autres
-- Séparation des builders dans un champ spécifique
-  - Plus facile de voir quand il y en a
-  - chaque builder est indépendant, on peut les réutiliser dans d'autres images
-- Bonnes pratiques par défaut
+- syntaxe:
+  - Plus facile de voir quand il y a des builders
+  - On peut réutiliser les builders dans d'autres images
+- bonnes pratiques:
   - Les images sont en rootless par défaut
-  - Les fichiers `.gitignore` sont inclus dans le même fichier
+  - La définition du `.gitignore` sont inclus dans le même fichier
+*/
+
+- Définition de la configuration en YAML (ou JSON) 🧑‍💻
+- Abstraction du concept de layers 📦
+- Syntaxe plus simple à lire et à écrire 📝
+- Bonnes pratiques par défaut 😇

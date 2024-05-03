@@ -1,0 +1,18 @@
+# syntax=docker/dockerfile:1.4
+
+# builder-0
+FROM maven:3.9-eclipse-temurin-17-alpine AS builder-0
+WORKDIR /app
+ADD --link . ./
+USER 0
+RUN \
+    --mount=type=cache,sharing=locked,uid=0,gid=0,target=/root/.m2\
+    --mount=type=cache,sharing=locked,uid=0,gid=0,target=/app/target\
+    mvn package -DskipTests && \
+    mv target/*.jar app.jar
+
+# runtime
+FROM eclipse-temurin:17-jre-alpine AS runtime
+COPY --link --chown=1000:1000 --from=builder-0 "/app/app.jar" "app.jar"
+USER 1000
+CMD ["java","-jar","app.jar"]

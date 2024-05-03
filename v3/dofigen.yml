@@ -1,13 +1,13 @@
 builders:
-- from: maven:3.9-eclipse-temurin-17-alpine
-  adds:
-  - "."
-  root:
-    run:
-    - mvn clean package -DskipTests
+  - from: maven:3.9-eclipse-temurin-17-alpine
+    add:
+      - "."
+    root:
+      run:
+        - mvn clean package -DskipTests
 from: eclipse-temurin:17-jre-alpine
 artifacts:
-- builder: builder-0
-  source: target/*.jar
-  destination: app.jar
+  - builder: builder-0
+    source: target/*.jar
+    target: app.jar
 cmd: ["java","-jar","app.jar"]
