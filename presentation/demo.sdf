@@ -1,9 +1,5 @@
 ## Démonstration
 
-/*
-A chaque étape (ou à la fin de la démonstration), montrer la taille de l'image, le temps de build, le nombre de layers, la gestion du cache, les failles de sécurité (comment ?)
-*/
-
 Comprendre par l'exemple
 
 ## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
@@ -28,7 +24,6 @@ http://localhost:8080/greeting
 
 ## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
 
-
 <div class="step">
 
 ### Métriques
@@ -37,7 +32,6 @@ http://localhost:8080/greeting
 - Temps de re-build: **équivalent**
 - Taille de l'image: **427M**
 - Utilisateur: **root**
-
 </div>
 
 <div class="step">
@@ -61,7 +55,6 @@ export num=1
 docker run --rm -it -p 8080:8080 devquest-${num}
 
 ./stats.sh
-
 */
 
 ```dockerfile
@@ -275,3 +268,24 @@ docker run --rm -it -p 8080:8080 devquest-${num}
 Il garde les libs dans le cache, et ne les recharge pas à chaque build
 */
 </div>
+
+## v4: Gestion du cache .[sbs]
+
+```dockerfile
+# syntax=docker/dockerfile:1.4
+# builder-0
+FROM maven:3.9-eclipse-temurin-17-alpine AS builder-0
+WORKDIR /app
+ADD --link . ./
+USER 0
+RUN \
+    --mount=type=cache,sharing=locked,uid=0,gid=0,target=/root/.m2\
+    --mount=type=cache,sharing=locked,uid=0,gid=0,target=/app/target\
+    mvn package -DskipTests && \
+    mv target/*.jar app.jar
+# runtime
+FROM eclipse-temurin:17-jre-alpine AS runtime
+COPY --link --chown=1000:1000 --from=builder-0 "/app/app.jar" "app.jar"
+USER 1000
+CMD ["java","-jar","app.jar"]
+```
