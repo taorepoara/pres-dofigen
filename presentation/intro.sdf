@@ -28,8 +28,6 @@ sondage: qui est dev ? qui a déjà utilisé écrit un Dockerfile ? qui comprend
 ## Comment Dofigen tente de répondre à ces problèmes .[steps]
 
 /*
-Dofigen est un outil qui permet de générer des Dockerfile.
-
 - yaml: simple à lire et à écrire + facile à modifier via un script (yq, jq) + avantages du YAML
 - layers: ordre des définitions n'a pas d'importance (dans un même niveau) + Gestion de cache plus simple
 - syntaxe: facile de voir les builders
