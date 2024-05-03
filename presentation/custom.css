@@ -39,3 +39,12 @@
     transform: translate(0, 0);
   }
 }
+
+pre {
+  width: fit-content;
+  font-size: 60%;
+}
+
+h3:not(h2+h3,h2+*>h3) {
+  margin-top: 1.5vw;
+}

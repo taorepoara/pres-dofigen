@@ -1,8 +1,8 @@
 from: eclipse-temurin:17-jdk
-adds:
-- "."
+add:
+  - "."
 root:
   run:
-  - ./mvnw clean package -DskipTests
-  - mv target/*.jar app.jar
+    - ./mvnw clean package -DskipTests
+    - mv target/*.jar app.jar
 cmd: ["java","-jar","app.jar"]

@@ -4,11 +4,13 @@ custom_css: custom.css
 
 # 🐋 Simplifiez la conteneurisation de vos idées !
 
-/*
-Attention à la présentation (éviter de se présenter en tant que CTO pour pas que ça soit pris comme un produit qu'on veut vendre)
-*/
+// Attention à la présentation (éviter de se présenter en tant que CTO pour pas que ça soit pris comme un produit qu'on veut vendre)
 
-<div class="xterm"></div>
+/*
+
+Bonjour à tous, je m'appelle Thomas, je suis développeur depuis plus de 15 ans aucours desquels j'ai souvent galéré pour mettre mes projets en ligne.
+Aujourd'hui, on va voir ensemble comment créer des images Docker pour envoyer vos projets en production en respectant les bonnes pratiques grâce à Dofigen.
+*/
 
 !include(intro.sdf)
 

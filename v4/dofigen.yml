@@ -1,23 +1,21 @@
 builders:
-- from: maven:3.9-eclipse-temurin-17-alpine
-  workspace: /app
-  adds:
-  - "."
-  root:
-    run:
-    - mvn clean package -DskipTests
-    - mv target/*.jar app.jar
-    caches:
-    - /root/.m2
-    - /app/target
+  - from: maven:3.9-eclipse-temurin-17-alpine
+    workdir: /app
+    add:
+      - "."
+    root:
+      run:
+        - mvn package -DskipTests
+        - mv target/*.jar app.jar
+      cache:
+        - /root/.m2
+        - /app/target
 from: eclipse-temurin:17-jre-alpine
-workspace: /app
 artifacts:
-- builder: builder-0
-  source: app.jar
-  destination: app.jar
+  - builder: builder-0
+    source: /app/app.jar
+    target: app.jar
 cmd: ["java","-jar","app.jar"]
-ignores:
-- "**"
-- "!/pom.xml"
-- "!/src/main/"
+context:
+  - /pom.xml
+  - /src/main/
