@@ -14,20 +14,20 @@ sondage: qui est dev ? qui a déjà utilisé écrit un Dockerfile ? qui comprend
 */
 
 /*
-- langage: pas envie, on dirait du Cobol
-- syntaxe: pas simple d'analyser ou de modifier un Dockerfile via un script
+- langage: pas envie, on dirait du Cobol + pas simple d'analyser ou de modifier un Dockerfile via un script
 - Dockerfile longs: les layers et builders pas toujours bien compris
 - bonnes pratiques: root par défaut + .gitingore fonctionnent à l'inverse selon moi
 */
 
-- Nouveau "langage" à apprendre
-- Une syntaxe en commandes
+- Nouveau "langage" à apprendre avec une syntaxe en commandes
 - Les Dockerfile sont souvent longs et complexes
 - Pas de "bonnes pratiques" évidentes de base
 
 ## Comment Dofigen tente de répondre à ces problèmes .[steps]
 
 /*
+Dofigen: Docker file generator
+
 - yaml: simple à lire et à écrire + facile à modifier via un script (yq, jq) + avantages du YAML
 - layers: ordre des définitions n'a pas d'importance (dans un même niveau) + Gestion de cache plus simple
 - syntaxe: facile de voir les builders

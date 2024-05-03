@@ -1,19 +1,23 @@
 
 ## Benchmark
 
-| Démo       | Taille image      | Temps build    | Temps re-build    | Utilisateur |
-|------------|-------------------|----------------|-------------------|-------------|
-| v0 🛑      | 427M              | 1s             | équivalent        | root        |
-| v1 Base    | 541M              | 20s            | équivalent        | root        |
-| v2 Dofigen | 521M              | 20s            | équivalent        | 1000        |
-| v3 Builder | 185M              | 20s            | équivalent        | 1000        |
-| v4 Cache   | 185M              | 20s            | 5s                | 1000        |
+/*
+Etape par étape, nous avons améliorer la construction de notre image Docker pour la rendre elligible à la production.
+*/
+
+| Démo       | Taille      | Tps 1er accès | Tps build   | Tps re-build  | User    | Sans JDK		|
+|------------|-------------|---------------|-------------|---------------|---------|------------|
+| v0 🛑      | 427M        | 25s           | 1s          | =             | root    | Non        |
+| v1 Base    | 541M        | 5s            | 20s         | =             | root    | Non        |
+| v2 Dofigen | 521M        | 5s            | 20s         | =             | 1000    | Non        |
+| v3 Builder | 185M        | 5s            | 20s         | =             | 1000    | Oui        |
+| v4 Cache   | 185M        | 5s            | 20s         | 5s            | 1000    | Oui        |
 
  
 ## Fonctionnalités envisagées
 
-- Offrire plus de configuration à l'ajout des fichiers ([136](https://github.com/lenra-io/dofigen/issues/136))
-- Inclure des fichiers Dofigen externes ([180](https://github.com/lenra-io/dofigen/issues/180))
+- Offrir plus de configuration à l'ajout des fichiers (issue [#136](https://github.com/lenra-io/dofigen/issues/136))
+- Inclure des fichiers Dofigen externes (issue [#180](https://github.com/lenra-io/dofigen/issues/180))
 - Générer un fichier de lock
 
 ## Merci !
