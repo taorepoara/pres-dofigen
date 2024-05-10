@@ -4,7 +4,7 @@ Comprendre par l'exemple
 
 /*
 Projet SpringBoot simple
-X dépendances pour un total de X Mo
+133 dépendances pour un total de 45 Mo
 */
 
 ## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
@@ -29,17 +29,14 @@ http://localhost:8080/greeting
 
 ## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
 
-<div class="step">
-
 ### Métriques
 
 - Temps de build initial: **1s**
-- Temps de re-build: **équivalent**
+- Temps de rebuild: **équivalent**
 - Taille de l'image: **427M**
 - Utilisateur: **root**
-</div>
 
-<div class="step">
+<div class="step" markdown>
 
 ### Problèmes
 
@@ -66,18 +63,16 @@ docker run --rm -it -p 8080:8080 devquest-${num}
 FROM eclipse-temurin:17-jdk
 COPY . .
 RUN ./mvnw clean package -DskipTests
-RUN mv target/ *.jar app.jar
+RUN mv target/*.jar app.jar
 CMD ["java","-jar","app.jar"]
 ```
 
 ## v1: Le Dockerfile de base .[sbs]
 
-<div class="step">
-
 ### Métriques
 
 - Temps de build initial: **20s**
-- Temps de re-build: **équivalent**
+- Temps de rebuild: **équivalent**
 - Taille de l'image: **541M**
 - Utilisateur: **root**
 
@@ -85,20 +80,14 @@ CMD ["java","-jar","app.jar"]
 Dépend de la vitesse de connexion, car c'est le chargement des libs qui prends du temps
 */
 
-</div>
-
-<div class="step">
-
 ### Problèmes
 
 - Image lourde 🪨
 - Contient le JDK 🐛
 - Chargement des libs à chaque build 📚
 - Utilisateur root 🧑‍💻
-</div>
 
-<div class="step">
-
+<div class="step" markdown>
 ### Du mieux
 
 - Amélioration du temps de démarrage 🚀
@@ -114,7 +103,7 @@ add:
 root:
   run:
     - ./mvnw clean package -DskipTests
-    - mv target/ *.jar app.jar
+    - mv target/*.jar app.jar
 cmd: ["java","-jar","app.jar"]
 ```
 
@@ -129,27 +118,20 @@ docker run --rm -it -p 8080:8080 devquest-${num}
 
 ## v2: Tranformation pour Dofigen .[sbs]
 
-<div class="step">
-
 ### Métriques
 
 - Temps de build initial: **20s**
-- Temps de re-build: **équivalent**
+- Temps de rebuild: **équivalent**
 - Taille de l'image: **521M**
 - Utilisateur: **1000**
-</div>
-
-<div class="step">
 
 ### Problèmes
 
 - Image lourde 🪨
 - Contient le JDK 🐛
 - Chargement des libs à chaque build 📚
-</div>
 
-<div class="step">
-
+<div class="step" markdown>
 ### Du mieux
 
 - Utilisateur non-root 😷
@@ -159,7 +141,6 @@ docker run --rm -it -p 8080:8080 devquest-${num}
 20 Mo de moins, c'est pas beaucoup, mais c'est déjà ça
 C'est dû aux RUN passés sur une seule commande
 */
-
 </div>
 
 ## v3: Optimiser la taille de l'image .[sbs]
@@ -175,7 +156,7 @@ builders:
 from: eclipse-temurin:17-jre-alpine
 artifacts:
   - builder: builder-0
-    source: target/ *.jar
+    source: target/*.jar
     target: app.jar
 cmd: ["java","-jar","app.jar"]
 ```
@@ -191,24 +172,17 @@ docker run --rm -it -p 8080:8080 devquest-${num}
 
 ## v3: Optimiser la taille de l'image .[sbs]
 
-<div class="step">
-
 ### Métriques
 - Temps de build initial: **20s**
-- Temps de re-build: **équivalent**
+- Temps de rebuild: **équivalent**
 - Taille de l'image: **185M**
 - Utilisateur: **1000**
-</div>
-
-<div class="step">
 
 ### Problèmes
 
 - Chargement des libs à chaque build 📚
-</div>
 
-<div class="step">
-
+<div class="step" markdown>
 ### Du mieux
 
 - Taille de l'image divisée par 3,5 🪶
@@ -226,7 +200,7 @@ builders:
     root:
       run:
         - mvn package -DskipTests
-        - mv target/ *.jar app.jar
+        - mv target/*.jar app.jar
       cache:
         - /root/.m2
         - /app/target
@@ -252,22 +226,18 @@ docker run --rm -it -p 8080:8080 devquest-${num}
 
 ## v4: Gestion du cache .[sbs]
 
-<div class="step">
-
 ### Métriques
 
 - Temps de build initial: **20s**
-- Temps de re-build: **5s**
+- Temps de rebuild: **5s**
 - Taille de l'image: **185M**
 - Utilisateur: **1000**
-</div>
 
-<div class="step">
-
+<div class="step" markdown>
 ### Du mieux
 
 - Chargement des libs une fois 🎒
-- Temps de re-build divisé par 4 ⌛
+- Temps de rebuild divisé par 4 ⌛
 
 /*
 Il garde les libs dans le cache, et ne les recharge pas à chaque build
@@ -278,6 +248,7 @@ Il garde les libs dans le cache, et ne les recharge pas à chaque build
 
 ```dockerfile
 # syntax=docker/dockerfile:1.4
+
 # builder-0
 FROM maven:3.9-eclipse-temurin-17-alpine AS builder-0
 WORKDIR /app
@@ -287,7 +258,8 @@ RUN \
     --mount=type=cache,sharing=locked,uid=0,gid=0,target=/root/.m2\
     --mount=type=cache,sharing=locked,uid=0,gid=0,target=/app/target\
     mvn package -DskipTests && \
-    mv target/ *.jar app.jar
+    mv target/*.jar app.jar
+
 # runtime
 FROM eclipse-temurin:17-jre-alpine AS runtime
 COPY --link --chown=1000:1000 --from=builder-0 "/app/app.jar" "app.jar"

@@ -1,5 +1,6 @@
 
-## 🤔 Problèmes avec les Dockerfile .[steps]
+## Problèmes avec les Dockerfile 🤔 .[steps]
+
 
 // En tant que dev, on a beaucoup de sujets à traîter, les tests, la sécurité, la performance, la lisibilité, la maintenabilité, etc.
 // Et on a pas forcément envie de passer du temps à comprendre comment fonctionne la création de conteneurs pour déployer nos projets.
@@ -7,34 +8,61 @@
 /*
 dev: beaucoup de sujets à traiter: tests, sécurité, performance, lisibilité, maintenabilité, etc.
 pas le temps et l'envie de comprendre les conteneurs
+
+Avant de commencer, Sondage
+
+Voici quelques problèmes que j'ai rencontré avec les Dockerfile
 */
+
+- Qui est développeur ?
+- Qui a déjà écrit un Dockerfile ?
+- Qui comprend le principe des layers et du cache de build dans Docker ?
+// Voir pour réduire la dernière question
+
+## Un nouveau "langage" à apprendre 🤯
+
+Quand tu décides de faire ton premier Dockerfile
+
+<div class="tenor-gif-embed" data-postid="13597827" data-share-method="host" data-aspect-ratio="2.15517" data-width="60%"><a href="https://tenor.com/view/bored-sigh-computer-laptop-homework-gif-13597827">Bored Sigh GIF</a>from <a href="https://tenor.com/search/bored-gifs">Bored GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 /*
-sondage: qui est dev ? qui a déjà utilisé écrit un Dockerfile ? qui comprends le principe des layers et le cache de build ?
+syntaxe en commandes
+
+- pas envie, on dirait du Cobol
+- pas simple d'analyser ou de modifier un Dockerfile via un script
 */
+
+## Les Dockerfile sont souvent longs et complexes 📜
+
+Quand tu lis un Dockerfile pour la première fois
+
+<div class="tenor-gif-embed" data-postid="18122359" data-share-method="host" data-aspect-ratio="1.77778" data-width="60%"><a href="https://tenor.com/view/theoffice-michael-scott-gif-18122359">Theoffice Michael Scott GIF</a>from <a href="https://tenor.com/search/theoffice-gifs">Theoffice GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 /*
-- langage: pas envie, on dirait du Cobol + pas simple d'analyser ou de modifier un Dockerfile via un script
-- Dockerfile longs: les layers et builders pas toujours bien compris
-- bonnes pratiques: root par défaut + .gitingore fonctionnent à l'inverse selon moi
+les layers et builders pas toujours bien compris
 */
 
-- Nouveau "langage" à apprendre avec une syntaxe en commandes
-- Les Dockerfile sont souvent longs et complexes
-- Pas de "bonnes pratiques" évidentes de base
+## Pas de "bonnes pratiques" par défaut 😑
+
+Quand tu envoies en prod
+
+<div class="tenor-gif-embed" data-postid="11760880" data-share-method="host" data-aspect-ratio="1.78295" data-width="60%"><a href="https://tenor.com/view/silicon-valley-fire-server-maintenance-gif-11760880">Silicon Valley Fire GIF</a>from <a href="https://tenor.com/search/silicon+valley-gifs">Silicon Valley GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+/*
+root par défaut sur la plus part des images
+.gitignore fonctionnent à l'inverse selon moi
+*/
 
 ## Comment Dofigen tente de répondre à ces problèmes .[steps]
 
 /*
 Dofigen: Docker file generator
 
-- yaml: simple à lire et à écrire + facile à modifier via un script (yq, jq) + avantages du YAML
+- syntaxe: simple à lire et à écrire + facile à modifier via un script (yq, jq) + facile de voir les builders
 - layers: ordre des définitions n'a pas d'importance (dans un même niveau) + Gestion de cache plus simple
-- syntaxe: facile de voir les builders
 - bonnes pratiques: rootless par défaut + `.gitignore` dans le même fichier
 */
 
-- Définition de la configuration en YAML (ou JSON) 🧑‍💻
+- Syntaxe en YAML (ou JSON) 📝
 - Abstraction du concept de layers 📦
-- Syntaxe plus simple à lire et à écrire 📝
 - Bonnes pratiques par défaut 😇
