@@ -88,6 +88,7 @@ Pour les problématiques, séparer en trois slides (une slide par problématique
 Faire des alias shell pour les commandes plutôt que de les écrire à chaque fois un seul script qui fait tout.
 
 Expliciter le nombre des dépendances et leur poid.
+449 dépendances dont 133 jar pour un total de 45 Mo
 
 Pour l'URL faire un curl ou un lien vers la page
 
