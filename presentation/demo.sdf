@@ -16,43 +16,11 @@ CMD ./mvnw spring-boot:run
 ```
 
 /*
-Facile, mais pas propre
+Plus intuitif
 From: image depuis laquelle on part
 Copy: copie des fichiers dans l'image
-Cmd: commande à exécuter au démarrage
+Cmd: commande exécutée au démarrage
 */
-
-## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
-
-### Métriques
-
-- Taille de l'image: **427M**
-- Temps de build initial: **1s**
-- Temps de rebuild: **équivalent**
-- Temps de 1er accès: **20s**
-- Utilisateur: **root**
-- Précense du JDK: **Oui**
-
-<div class="step" markdown>
-
-### Problèmes
-
-- Chargement des libs au démarrage 🐌
-- Besoin d'internet pour démarrer 🌐
-- Image lourde 🪨
-- Contient le JDK 🐛
-- Utilisateur root 🧑‍💻
-</div>
-
-/*
-Problèmes:
-Chargement des libs au démarrage 
-donc, besoin d'internet pour démarrer
-Image lourde
-Contient le JDK
-Utilisateur root
-*/
-
 
 ## v1: Le Dockerfile de base .[sbs]
 
@@ -257,30 +225,3 @@ Définition du contexte pour ne charger que ce qui est nécessaire
 Il garde les libs dans le cache, et ne les recharge pas à chaque build
 */
 </div>
-
-## v4: Gestion du cache .[sbs]
-
-/*
-Voici à quoi ressemble le Dockerfile final
-*/
-
-```dockerfile
-# syntax=docker/dockerfile:1.4
-
-# builder-0
-FROM maven:3.9-eclipse-temurin-17-alpine AS builder-0
-WORKDIR /app
-ADD --link . ./
-USER 0
-RUN \
-    --mount=type=cache,sharing=locked,uid=0,gid=0,target=/root/.m2\
-    --mount=type=cache,sharing=locked,uid=0,gid=0,target=/app/target\
-    mvn package -DskipTests && \
-    mv target/*.jar app.jar
-
-# runtime
-FROM eclipse-temurin:17-jre-alpine AS runtime
-COPY --link --chown=1000:1000 --from=builder-0 "/app/app.jar" "app.jar"
-USER 1000
-CMD ["java","-jar","app.jar"]
-```

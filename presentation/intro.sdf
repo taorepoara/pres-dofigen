@@ -12,6 +12,11 @@ pas le temps et l'envie de comprendre les conteneurs
 
 Avant de commencer, Sondage
 
+Pour ceux qui ne savent pas
+le layer est l'équivalent d'un commit dans un git
+les builder
+
+
 Voici quelques problèmes que j'ai rencontré avec les Dockerfile
 */
 
