@@ -17,8 +17,14 @@ Etape par étape, nous avons améliorer la construction de notre image Docker po
 ## Fonctionnalités envisagées
 
 - Offrir plus de configuration à l'ajout des fichiers (issue [#136](https://github.com/lenra-io/dofigen/issues/136))
-- Inclure des fichiers Dofigen externes (issue [#180](https://github.com/lenra-io/dofigen/issues/180))
+- Etendre des fichiers Dofigen externes (issue [#180](https://github.com/lenra-io/dofigen/issues/180))
 - Générer un fichier de lock (issue [#181](https://github.com/lenra-io/dofigen/issues/181))
+
+/*
+Copier les fichiers ailleurs que dans le dossier courant
+Entendre des fichiers externes pour avoir une base commune
+Fichier de lock comme pour les package manager
+*/
 
 ## Merci !
 

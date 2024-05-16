@@ -24,7 +24,7 @@ cd /home/taorepoara/presentations/devquest-2024
 Dans un autre terminal:
 
 ```console
-bunx slidesk presentation
+bunx slidesk presentation -n -t
 ```
 
 ### Les tests

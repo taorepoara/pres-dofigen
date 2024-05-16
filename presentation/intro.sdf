@@ -5,6 +5,7 @@
 // En tant que dev, on a beaucoup de sujets à traîter, les tests, la sécurité, la performance, la lisibilité, la maintenabilité, etc.
 // Et on a pas forcément envie de passer du temps à comprendre comment fonctionne la création de conteneurs pour déployer nos projets.
 // J'ai créé Dofigen pour essayer de simplifier la création de Dockerfile et de rendre cette tâche plus accessible.
+
 /*
 dev: beaucoup de sujets à traiter: tests, sécurité, performance, lisibilité, maintenabilité, etc.
 pas le temps et l'envie de comprendre les conteneurs
@@ -60,7 +61,7 @@ Dofigen: Docker file generator
 
 - syntaxe: simple à lire et à écrire + facile à modifier via un script (yq, jq) + facile de voir les builders
 - layers: ordre des définitions n'a pas d'importance (dans un même niveau) + Gestion de cache plus simple
-- bonnes pratiques: rootless par défaut + `.gitignore` dans le même fichier
+- bonnes pratiques: rootless par défaut + `.gitignore` dans le même fichier et peut être défini par ajout  plutôt que suppression
 */
 
 - Syntaxe en YAML (ou JSON) 📝
