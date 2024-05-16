@@ -16,47 +16,50 @@ CMD ./mvnw spring-boot:run
 ```
 
 /*
-export num=0
-./build.sh
-
-docker run --rm -it -p 8080:8080 devquest-${num}
-
-http://localhost:8080/greeting
-
-./stats.sh
-
+Facile, mais pas propre
+From: image depuis laquelle on part
+Copy: copie des fichiers dans l'image
+Cmd: commande à exécuter au démarrage
 */
 
 ## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
 
 ### Métriques
 
+- Taille de l'image: **427M**
 - Temps de build initial: **1s**
 - Temps de rebuild: **équivalent**
-- Taille de l'image: **427M**
+- Temps de 1er accès: **20s**
 - Utilisateur: **root**
+- Précense du JDK: **Oui**
 
 <div class="step" markdown>
 
 ### Problèmes
 
 - Chargement des libs au démarrage 🐌
-- besoin d'internet pour démarrer 🌐
+- Besoin d'internet pour démarrer 🌐
 - Image lourde 🪨
 - Contient le JDK 🐛
 - Utilisateur root 🧑‍💻
 </div>
 
+/*
+Problèmes:
+Chargement des libs au démarrage 
+donc, besoin d'internet pour démarrer
+Image lourde
+Contient le JDK
+Utilisateur root
+*/
+
 
 ## v1: Le Dockerfile de base .[sbs]
 
 /*
-export num=1
-./build.sh
-
-docker run --rm -it -p 8080:8080 devquest-${num}
-
-./stats.sh
+On compile le projet avec maven
+On renome le jar pour qu'il soit plus facilement accessible
+On modifie la commande de démarrage pour lancer le jar
 */
 
 ```dockerfile
@@ -71,14 +74,12 @@ CMD ["java","-jar","app.jar"]
 
 ### Métriques
 
+- Taille de l'image: **541M**
 - Temps de build initial: **20s**
 - Temps de rebuild: **équivalent**
-- Taille de l'image: **541M**
+- Temps de 1er accès: **3s**
 - Utilisateur: **root**
-
-/*
-Dépend de la vitesse de connexion, car c'est le chargement des libs qui prends du temps
-*/
+- Précense du JDK: **Oui**
 
 ### Problèmes
 
@@ -94,6 +95,13 @@ Dépend de la vitesse de connexion, car c'est le chargement des libs qui prends 
 - Plus besoin d'accès internet ⛓️‍💥
 </div>
 
+/*
+dépendances à la compilation => 
+
+Amélioration du temps de démarrage
+Plus besoin d'accès internet
+*/
+
 ## v2: Tranformation pour Dofigen .[sbs]
 
 ```yaml
@@ -108,22 +116,20 @@ cmd: ["java","-jar","app.jar"]
 ```
 
 /*
-export num=2
-./build.sh
-
-docker run --rm -it -p 8080:8080 devquest-${num}
-
-./stats.sh
+On prend les champs correspondants aux commandes du Dockerfile
+Le seul changement est la définition de la commande en tant que root, car par défaut non-root
 */
 
 ## v2: Tranformation pour Dofigen .[sbs]
 
 ### Métriques
 
+- Taille de l'image: **521M**
 - Temps de build initial: **20s**
 - Temps de rebuild: **équivalent**
-- Taille de l'image: **521M**
+- Temps de 1er accès: **3s**
 - Utilisateur: **1000**
+- Précense du JDK: **Oui**
 
 ### Problèmes
 
@@ -138,7 +144,8 @@ docker run --rm -it -p 8080:8080 devquest-${num}
 - On gagne 20M sur l'image 💇
 
 /*
-20 Mo de moins, c'est pas beaucoup, mais c'est déjà ça
+Utilisateur non root
+20 Mo de moins: pas grand chose, équivalent à une coupe de cheuveux
 C'est dû aux RUN passés sur une seule commande
 */
 </div>
@@ -162,21 +169,22 @@ cmd: ["java","-jar","app.jar"]
 ```
 
 /*
-export num=3
-./build.sh
-
-docker run --rm -it -p 8080:8080 devquest-${num}
-
-./stats.sh
+Définition d'un builder basé sur une image maven alpine (légère)
+Utilisation de maven sans wrapper
+Image finale basée sur JRE alpine
+Récupération du JAR en tant qu'artefact depuis le builder
 */
 
 ## v3: Optimiser la taille de l'image .[sbs]
 
 ### Métriques
+
+- Taille de l'image: **185M**
 - Temps de build initial: **20s**
 - Temps de rebuild: **équivalent**
-- Taille de l'image: **185M**
+- Temps de 1er accès: **3s**
 - Utilisateur: **1000**
+- Précense du JDK: **Non**
 
 ### Problèmes
 
@@ -188,6 +196,11 @@ docker run --rm -it -p 8080:8080 devquest-${num}
 - Taille de l'image divisée par 3,5 🪶
 - Plus de JDK dans l'image finale 🛡️
 </div>
+
+/*
+Taille de l'image divisée par 3,5 🪶
+Plus de JDK dans l'image finale 🛡️
+*/
 
 ## v4: Gestion du cache .[sbs]
 
@@ -216,22 +229,23 @@ context:
 ```
 
 /*
-export num=4
-./build.sh
+Ajout d'un workdir, car le cache est défini de manière absolue
+Définition de deux caches:  dépendances maven + build du projet
+Déplacement du jar en dehors du dossier target qui est en cache
 
-docker run --rm -it -p 8080:8080 devquest-${num}
-
-./stats.sh
+Définition du contexte pour ne charger que ce qui est nécessaire
 */
 
 ## v4: Gestion du cache .[sbs]
 
 ### Métriques
 
+- Taille de l'image: **185M**
 - Temps de build initial: **20s**
 - Temps de rebuild: **5s**
-- Taille de l'image: **185M**
+- Temps de 1er accès: **3s**
 - Utilisateur: **1000**
+- Précense du JDK: **Non**
 
 <div class="step" markdown>
 ### Du mieux
@@ -245,6 +259,10 @@ Il garde les libs dans le cache, et ne les recharge pas à chaque build
 </div>
 
 ## v4: Gestion du cache .[sbs]
+
+/*
+Voici à quoi ressemble le Dockerfile final
+*/
 
 ```dockerfile
 # syntax=docker/dockerfile:1.4
