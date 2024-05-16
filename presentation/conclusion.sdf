@@ -2,7 +2,7 @@
 ## Benchmark
 
 /*
-Etape par étape, nous avons améliorer la construction de notre image Docker pour la rendre elligible à la production.
+Etape par étape, rendre elligible à la production.
 */
 
 | Démo       | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
@@ -21,12 +21,21 @@ Etape par étape, nous avons améliorer la construction de notre image Docker po
 - Générer un fichier de lock (issue [#181](https://github.com/lenra-io/dofigen/issues/181))
 
 /*
+Projet open source
+
 Copier les fichiers ailleurs que dans le dossier courant
 Entendre des fichiers externes pour avoir une base commune
 Fichier de lock comme pour les package manager
+
+venez contribuer !
 */
 
 ## Merci !
+
+/*
+Merci
+J'espère que Dofigen vous aidera à créer des images Docker éligibles à la production.
+*/
 
 @taorepoara - Thomas DA ROCHA - CTO de Lenra
 

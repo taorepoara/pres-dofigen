@@ -99,3 +99,32 @@ Pour la v1 (et chaque version suivante):
 
 Faire que Dofigen ajoute un commentaire dans le Dockerfile pour dire que c'est généré par Dofigen avec la version
 
+
+
+Demo time 3:20
+
+v1: 4:00
+
+v2: 6:47
+
+v3: 8:40
+
+v4: 10:37
+
+benchmark 13:27
+
+Fonctionnalités 14:00
+
+fin à 15:16
+
+
+Voir si on garde la v0 ou pas (voir partiellement)
+
+Ne lancer la démo que pour les v1 et v4 
+
+Supprimer le dockerfile généré par la v4
+
+
+Temps de build quand tout va bien (temps de récupération des dépendances)
+- v1: 54s
+- v4: 31s
