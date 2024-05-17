@@ -128,3 +128,6 @@ Supprimer le dockerfile généré par la v4
 Temps de build quand tout va bien (temps de récupération des dépendances)
 - v1: 54s
 - v4: 31s
+
+
+Voir si la dualité de l'image (build et run) est pertinente pour Niort
