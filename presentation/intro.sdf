@@ -13,8 +13,9 @@ pas le temps et l'envie de comprendre les conteneurs
 Avant de commencer, Sondage
 
 Pour ceux qui ne savent pas
-le layer est l'équivalent d'un commit dans un git
-les builder
+le layer est un niveau de construction d'une image. équivalent d'un commit dans un git
+un builder une image temporaire dans laquelle on peut faire des traîtement dont le résultat pourra être copié dans l'image finale
+*/
 
 
 Voici quelques problèmes que j'ai rencontré avec les Dockerfile

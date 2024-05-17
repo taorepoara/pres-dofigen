@@ -1,13 +1,29 @@
-## Démonstration
+## Démonstration .[sbs]
 
 Comprendre par l'exemple
+
+<div class="step" markdown>
+### Objectifs
+
+- 🪶: Image légère
+- 🚀: Démarrage rapide
+- ⌛: Rebuild rapide
+- 🛡️: Sans JDK
+- 😷: Utilisateur non-root
+</div>
 
 /*
 Projet SpringBoot simple
 133 dépendances pour un total de 45 Mo
+
+🪶: Image légère pour la charger plus rapidement
+🚀: Démarrage rapide pour avoir accès 
+⌛: Rebuild rapide pour ne pas perdre de temps lors du développement
+🛡️: Sans JDK pour éviter de permettre de build une classe Java directement
+😷: Utilisateur non-root pour limiter les possibilitées d'attaques
 */
 
-## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
+## v0: 🛑 Le Dockerfile à ne pas faire
 
 ```dockerfile
 FROM eclipse-temurin:17-jdk
@@ -42,7 +58,7 @@ CMD ["java","-jar","app.jar"]
 
 ### Métriques
 
-- Taille de l'image: **541M**
+- Taille de l'image: **541 Mo**
 - Temps de build initial: **20s**
 - Temps de rebuild: **équivalent**
 - Temps de 1er accès: **3s**
@@ -92,7 +108,7 @@ Le seul changement est la définition de la commande en tant que root, car par d
 
 ### Métriques
 
-- Taille de l'image: **521M**
+- Taille de l'image: **521 Mo**
 - Temps de build initial: **20s**
 - Temps de rebuild: **équivalent**
 - Temps de 1er accès: **3s**
@@ -109,7 +125,7 @@ Le seul changement est la définition de la commande en tant que root, car par d
 ### Du mieux
 
 - Utilisateur non-root 😷
-- On gagne 20M sur l'image 💇
+- On gagne 20 Mo sur l'image 💇
 
 /*
 Utilisateur non root
@@ -147,7 +163,7 @@ Récupération du JAR en tant qu'artefact depuis le builder
 
 ### Métriques
 
-- Taille de l'image: **185M**
+- Taille de l'image: **185 Mo**
 - Temps de build initial: **20s**
 - Temps de rebuild: **équivalent**
 - Temps de 1er accès: **3s**
@@ -208,7 +224,7 @@ Définition du contexte pour ne charger que ce qui est nécessaire
 
 ### Métriques
 
-- Taille de l'image: **185M**
+- Taille de l'image: **185 Mo**
 - Temps de build initial: **20s**
 - Temps de rebuild: **5s**
 - Temps de 1er accès: **3s**
