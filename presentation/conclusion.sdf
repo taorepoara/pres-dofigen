@@ -1,8 +1,24 @@
 
+## Un projet qui évolue .[steps]
+
+- Amélioration de l'ajout de fichiers (issue [#136](https://github.com/lenra-io/dofigen/issues/136))
+- Etendre des configuration Dofigen (issue [#180](https://github.com/lenra-io/dofigen/issues/180))
+- Générer un fichier de lock (issue [#181](https://github.com/lenra-io/dofigen/issues/181))
+- Et bien plus...
+
+/*
+Copier les fichiers ailleurs que dans le dossier courant
+Entendre des fichiers externes pour avoir une base commune
+Fichier de lock pour garder le hash des images d'origine comme le font les package manager
+Venez contribuer !
+*/
+
 ## Benchmark
 
 /*
-Etape par étape, rendre elligible à la production.
+Etape par étape, on a amélioré notre image Docker rendre elligible à la production.
+Il y a certainement d'autres étapes pour la rendre éligible à la production.
+Venez tester, venez expérimenter, venez contribuer à ce projet, il est open source et sur Github, et j'ai hâte de voir toutes les nouvelles idées qui pourront en surgir. 
 */
 
 | Démo       | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
@@ -14,31 +30,16 @@ Etape par étape, rendre elligible à la production.
 | v4 Cache   | 185 Mo 🪶   | 3s 🚀     | 20s         | 5s ⌛         | 1000 😷 | Oui 🛡️     |
 
 
-## Fonctionnalités envisagées .[steps]
-
-- Amélioration de l'ajout de fichiers (issue [#136](https://github.com/lenra-io/dofigen/issues/136))
-- Etendre des configuration Dofigen (issue [#180](https://github.com/lenra-io/dofigen/issues/180))
-- Générer un fichier de lock (issue [#181](https://github.com/lenra-io/dofigen/issues/181))
-- Et bien plus...
-
-/*
-Projet open source
-
-Copier les fichiers ailleurs que dans le dossier courant
-Entendre des fichiers externes pour avoir une base commune
-Fichier de lock pour garder le hash des images d'origine comme le font les package manager
-Venez contribuer !
-*/
-
 ## Merci !
 
 /*
-Merci
-J'espère que Dofigen vous aidera à créer des images Docker éligibles à la production.
+Je suis Thomas DA ROCHA, développeur depuis 2007 et CTO de Lenra.
+
+Merci pour votre attention, j'espère que vous avez apprécié.
 
 Question ?
 */
 
-@taorepoara - Thomas DA ROCHA - CTO de Lenra
+@taorepoara - Thomas DA ROCHA - Dev depuis 2007 et CTO de Lenra
 
 [github.com/lenra-io/dofigen](https://github.com/lenra-io/dofigen)
