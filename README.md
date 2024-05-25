@@ -27,6 +27,12 @@ Dans un autre terminal:
 bunx slidesk presentation -n -t
 ```
 
+#### Générer un backup des slides
+
+```console
+bunx slidesk presentation -s backup
+```
+
 ### Les tests
 
 ```console
@@ -131,3 +137,14 @@ Temps de build quand tout va bien (temps de récupération des dépendances)
 
 
 Voir si la dualité de l'image (build et run) est pertinente pour Niort
+
+
+## Retour du 23/05
+
+Mettre le code en plus gros.
+
+Mettre un QRCode pour le lien du repo.
+
+Expliquer l'origine du projet avec.
+
+Mettre dans les notes le lancement de la démo et les transitions.

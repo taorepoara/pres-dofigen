@@ -1,14 +1,18 @@
 
-## Un projet qui évolue .[steps]
+## Dofigen: un projet Open Source .[steps]
 
-- Amélioration de l'ajout de fichiers (issue [#136](https://github.com/lenra-io/dofigen/issues/136))
-- Etendre des configuration Dofigen (issue [#180](https://github.com/lenra-io/dofigen/issues/180))
-- Générer un fichier de lock (issue [#181](https://github.com/lenra-io/dofigen/issues/181))
+<img class="qrcode" src="./qrcode.png" />
+
+<a class="marge" href="https://github.com/lenra-io/dofigen">github.com/lenra-io/dofigen</a>
+
+- Amélioration de l'ajout de fichiers
+- Etendre des configuration Dofigen externes
+- Générer un fichier de lock avec les hash des images
 - Et bien plus...
 
 /*
 Copier les fichiers ailleurs que dans le dossier courant
-Entendre des fichiers externes pour avoir une base commune
+Entendre des configurations Dofigen externes
 Fichier de lock pour garder le hash des images d'origine comme le font les package manager
 Venez contribuer !
 */
@@ -16,9 +20,9 @@ Venez contribuer !
 ## Benchmark
 
 /*
-Etape par étape, on a amélioré notre image Docker rendre elligible à la production.
-Il y a certainement d'autres étapes pour la rendre éligible à la production.
-Venez tester, venez expérimenter, venez contribuer à ce projet, il est open source et sur Github, et j'ai hâte de voir toutes les nouvelles idées qui pourront en surgir. 
+Etape par étape, on a amélioré notre image Docker pour la rendre elligible à la production.
+Il y a certainement d'autres étapes pour l'améliorer.
+Venez tester, venez expérimenter, venez contribuer à Dofigen, il est open source et sur Github, et j'ai hâte de voir toutes les nouvelles idées qui pourront en surgir.
 */
 
 | Démo       | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
@@ -37,9 +41,9 @@ Je suis Thomas DA ROCHA, développeur depuis 2007 et CTO de Lenra.
 
 Merci pour votre attention, j'espère que vous avez apprécié.
 
-Question ?
+Des questions ?
 */
 
-@taorepoara - Thomas DA ROCHA - Dev depuis 2007 et CTO de Lenra
+@taorepoara - Thomas DA ROCHA
 
-[github.com/lenra-io/dofigen](https://github.com/lenra-io/dofigen)
+Dev depuis 2007 et CTO de Lenra
