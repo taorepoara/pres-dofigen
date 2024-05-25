@@ -19,18 +19,20 @@ un builder une image temporaire dans laquelle on peut faire des traîtement dont
 
 
 Voici quelques problèmes que j'ai rencontré avec les Dockerfile
-*/
 
 - Qui est développeur ?
 - Qui a déjà écrit un Dockerfile ?
 - Qui comprend le principe des layers et du cache de build dans Docker ?
-// Voir pour réduire la dernière question
+
+/*
+Next: Syntaxe des Dockerfile
+*/
 
 ## Un nouveau "langage" à apprendre 🤯
 
 Quand tu décides de faire ton premier Dockerfile
 
-<div class="tenor-gif-embed" data-postid="13597827" data-share-method="host" data-aspect-ratio="2.15517" data-width="60%"><a href="https://tenor.com/view/bored-sigh-computer-laptop-homework-gif-13597827">Bored Sigh GIF</a>from <a href="https://tenor.com/search/bored-gifs">Bored GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<img src="./bored-sigh.gif" style="width: 50vw;" />
 
 /*
 syntaxe en commandes
@@ -43,26 +45,33 @@ syntaxe en commandes
 
 Quand tu lis un Dockerfile pour la première fois
 
-<div class="tenor-gif-embed" data-postid="18122359" data-share-method="host" data-aspect-ratio="1.77778" data-width="60%"><a href="https://tenor.com/view/theoffice-michael-scott-gif-18122359">Theoffice Michael Scott GIF</a>from <a href="https://tenor.com/search/theoffice-gifs">Theoffice GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<img src="./theoffice-michael-scott.gif" style="width: 50vw;" />
 
 /*
 les layers et builders pas toujours bien compris
+
+Next: Une fois qu'on a réussi à créer son image Docker, on se rend compte qu'on a pas respecté les bonnes pratiques pour l'envoyer en prod
 */
 
 ## Pas de "bonnes pratiques" par défaut 😑
 
 Quand tu envoies en prod
 
-<div class="tenor-gif-embed" data-postid="11760880" data-share-method="host" data-aspect-ratio="1.78295" data-width="60%"><a href="https://tenor.com/view/silicon-valley-fire-server-maintenance-gif-11760880">Silicon Valley Fire GIF</a>from <a href="https://tenor.com/search/silicon+valley-gifs">Silicon Valley GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<img src="./silicon-valley-fire.gif" style="width: 50vw;" />
 
 /*
 root par défaut sur la plus part des images
 .gitignore fonctionnent à l'inverse selon moi
+
+Next: Comment Dofigen tente de répondre à ces problèmes
 */
 
 ## Comment Dofigen tente de répondre à ces problèmes .[steps]
 
 /*
+Pour Lenra, on voulait une solution simple pour les devs de créer des images Docker pour la prod.
+J'ai créé Dofigen comme un projet à part et qui est utilisé comme dépendance du CLI de Lenra.
+
 Dofigen: Docker file generator
 
 - syntaxe: simple à lire et à écrire + facile à modifier via un script (yq, jq) + facile de voir les builders

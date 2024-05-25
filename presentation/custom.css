@@ -41,6 +41,10 @@
 
 pre {
   width: fit-content;
+  font-size: 75%;
+}
+
+#sd-sv-left pre {
   font-size: 60%;
 }
 
@@ -65,8 +69,38 @@ tbody>tr:last-of-type>td {
   font-weight: bold;
 }
 
-.tenor-gif-embed {
+img[src$=".gif"] {
   margin-top: 2vw;
+}
+
+img.qrcode {
+  position: fixed;
+  bottom: 2vw;
+  right: 2vw;
+  width: 10vw;
+}
+
+div.approved {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  &::before {
+    content: "";
+    position: fixed;
+    display: block;
+    bottom: 2vw;
+    right: 2vw;
+    width: 15vw;
+    height: 15vw;
+    background-image: url("./approved.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+a.marge {
+  display: inline-block;
+  padding-bottom: 1vw;
 }
 
 /* Mise en avant des changements */

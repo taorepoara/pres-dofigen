@@ -23,7 +23,7 @@ Projet SpringBoot simple
 😷: Utilisateur non-root pour limiter les possibilitées d'attaques
 */
 
-## v0: 🛑 Le Dockerfile à ne pas faire
+## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
 
 ```dockerfile
 FROM eclipse-temurin:17-jdk
@@ -31,19 +31,30 @@ COPY . .
 CMD ./mvnw spring-boot:run
 ```
 
+### Gros Problème
+
+Chargement des dépendances au démarrage...
+
 /*
 Plus intuitif
+
 From: image depuis laquelle on part
 Copy: copie des fichiers dans l'image
 Cmd: commande exécutée au démarrage
+
+Problème: les dépendances sont chargées à chaque démarrage
 */
 
 ## v1: Le Dockerfile de base .[sbs]
 
 /*
+LANCER LA DEMO 1
+
 On compile le projet avec maven
 On renome le jar pour qu'il soit plus facilement accessible
 On modifie la commande de démarrage pour lancer le jar
+
+Next: Il reste des problèmes
 */
 
 ```dockerfile
@@ -84,6 +95,8 @@ dépendances à la compilation =>
 
 Amélioration du temps de démarrage
 Plus besoin d'accès internet
+
+Next: Transformation pour Dofigen
 */
 
 ## v2: Tranformation pour Dofigen .[sbs]
@@ -131,6 +144,8 @@ Le seul changement est la définition de la commande en tant que root, car par d
 Utilisateur non root
 20 Mo de moins: pas grand chose, équivalent à une coupe de cheuveux
 C'est dû aux RUN passés sur une seule commande
+
+Next: Réduire la taille de l'image
 */
 </div>
 
@@ -184,6 +199,8 @@ Récupération du JAR en tant qu'artefact depuis le builder
 /*
 Taille de l'image divisée par 3,5 🪶
 Plus de JDK dans l'image finale 🛡️
+
+Next: Réduire le temps de build
 */
 
 ## v4: Gestion du cache .[sbs]
@@ -213,6 +230,8 @@ context:
 ```
 
 /*
+LANCER LA DEMO 4
+
 Ajout d'un workdir, car le cache est défini de manière absolue
 Définition de deux caches:  dépendances maven + build du projet
 Déplacement du jar en dehors du dossier target qui est en cache
@@ -241,3 +260,5 @@ Définition du contexte pour ne charger que ce qui est nécessaire
 Il garde les libs dans le cache, et ne les recharge pas à chaque build
 */
 </div>
+
+<div class="step approved"></div>
