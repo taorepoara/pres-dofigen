@@ -11,10 +11,13 @@
 - Et bien plus...
 
 /*
+Dofigen est un projet open source qui peut être amélioré.
+
+Quelques idées:
 Copier les fichiers ailleurs que dans le dossier courant
 Entendre des configurations Dofigen externes
 Fichier de lock pour garder le hash des images d'origine comme le font les package manager
-Venez contribuer !
+Venez proposer des idées pour faciliter les builds Docker
 */
 
 ## Benchmark
