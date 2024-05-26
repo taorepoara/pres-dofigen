@@ -258,7 +258,13 @@ Définition du contexte pour ne charger que ce qui est nécessaire
 
 /*
 Il garde les libs dans le cache, et ne les recharge pas à chaque build
+
+On a enfin une image qui répond à tous nos objectifs !
 */
 </div>
 
 <div class="step approved"></div>
+
+/*
+Next: On pourrait aller plus loin
+*/
