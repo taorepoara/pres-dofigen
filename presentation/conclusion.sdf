@@ -1,31 +1,9 @@
 
-## Dofigen: un projet Open Source .[steps]
-
-<img class="qrcode" src="./qrcode.png" />
-
-<a class="marge" href="https://github.com/lenra-io/dofigen">github.com/lenra-io/dofigen</a>
-
-- Amélioration de l'ajout de fichiers
-- Etendre des configuration Dofigen externes
-- Générer un fichier de lock avec les hash des images
-- Et bien plus...
-
-/*
-Dofigen est un projet open source qui peut être amélioré.
-
-Quelques idées:
-Copier les fichiers ailleurs que dans le dossier courant
-Entendre des configurations Dofigen externes
-Fichier de lock pour garder le hash des images d'origine comme le font les package manager
-Venez proposer des idées pour faciliter les builds Docker
-*/
-
 ## Benchmark
 
 /*
 Etape par étape, on a amélioré notre image Docker pour la rendre elligible à la production.
 Il y a certainement d'autres étapes pour l'améliorer.
-Venez tester, venez expérimenter, venez contribuer à Dofigen, il est open source et sur Github, et j'ai hâte de voir toutes les nouvelles idées qui pourront en surgir.
 */
 
 | Démo       | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
@@ -35,6 +13,28 @@ Venez tester, venez expérimenter, venez contribuer à Dofigen, il est open sour
 | v2 Dofigen | 521 Mo      | 3s        | 20s         | =             | 1000    | Non        |
 | v3 Builder | 185 Mo      | 3s        | 20s         | =             | 1000    | Oui        |
 | v4 Cache   | 185 Mo 🪶   | 3s 🚀     | 20s         | 5s ⌛         | 1000 😷 | Oui 🛡️     |
+
+
+## Dofigen: un projet Open Source
+
+<img class="qrcode" src="./qrcode.png" />
+
+<a class="marge" href="https://github.com/lenra-io/dofigen">github.com/lenra-io/dofigen</a>
+
+- Etendre d'autres fichiers Dofigen
+- Générer un fichier de lock avec les hash des images
+- Intégrer dans Docker Compose
+
+/*
+Dofigen est un projet open source qui peut être amélioré.
+
+On souhaite ajouter de nouvelles fonctionnalités, comme
+- l'extension d'autres fichiers Dofigen
+- la génération d'un fichier lock avec le hash des images sources
+- et l'intégration dans Docker Compose
+
+Venez voir, venez expérimenter, venez contribuer à Dofigen, il est sur Github, et j'ai hâte de voir toutes les nouvelles idées qui pourront en surgir.
+*/
 
 
 ## Merci !
