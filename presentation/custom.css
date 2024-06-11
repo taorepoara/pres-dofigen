@@ -1,4 +1,31 @@
 :root {
+  --green-data: 87, 192, 179;
+  --green-pulse-data: 56, 149, 137;
+  --green-pulse-hover-data: 42, 111, 102;
+  --green: rgb(var(--green-data));
+  --blue-data: 112, 203, 242;
+  --blue-pulse-data: 25, 172, 234;
+  --blue: rgb(var(--blue-data));
+  --yellow-data: 246, 194, 139;
+  --yellow: rgb(var(--yellow-data));
+  --yellow-pulse-data: 239, 144, 44;
+  --red-data: 242, 122, 134;
+  --red-pulse-data: 233, 34, 54;
+  --red: rgb(var(--red-data));
+  --primary-color-data: 18, 105, 237;
+  --primary-color-hover-data: 13, 77, 174;
+  --primary-color-opacity: 1;
+  --primary-color: rgb(var(--primary-color-data));
+  --secondary-color-data: 56, 149, 137;
+  --secondary-color-hover-data: 42, 111, 102;
+  --black-data: 30, 35, 44;
+  --black: rgb(var(--black-data));
+  --white-data: 255, 255, 255;
+  --white: white;
+
+  --text-color-data: var(--black-data);
+  --background-color-data: var(--white-data);
+
   --sd-heading1-size: 5vw;
   --sd-heading1-line-height: 1.2;
   --sd-heading2-size: 3vw;
@@ -6,10 +33,10 @@
   --sd-text-size: 2.2vw;
   --sd-text-line-height: 1.2;
 
-  --sd-background-color: rgb(30, 35, 44);
-  --sd-heading-color: rgba(255, 255, 255);
-  --sd-text-color: rgba(255, 255, 255);
-  --sd-primary-color: rgb(18, 105, 237);
+  --sd-background-color: rgb(var(--background-color-data));
+  --sd-heading-color: rgb(var(--text-color-data));
+  --sd-text-color: rgb(var(--text-color-data));
+  --sd-primary-color: var(--primary-color);
 
   /* SpeakerView */
   --sd-sv-timer-size: 80px;
@@ -17,6 +44,13 @@
   --sd-sv-text-line-height: 1.2;
   --sd-sv-background-color: #242424;
   --sd-sv-text-color: rgba(255, 255, 255, 0.87);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color-data: var(--white-data);
+    --background-color-data: var(--black-data);
+  }
 }
 
 .sd-app::after {
@@ -60,12 +94,12 @@ th,
 td {
   padding: 0.5vw 1vw;
   text-align: left;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(var(--text-color-data), 0.3);
 }
 
 tbody>tr:last-of-type>td {
   border-width: 3px;
-  border-color: rgba(255, 255, 255);
+  border-color: rgba(var(--text-color-data));
   font-weight: bold;
 }
 

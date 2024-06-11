@@ -24,7 +24,7 @@ cd /home/taorepoara/presentations/devquest-2024
 Dans un autre terminal:
 
 ```console
-bunx slidesk presentation -n -t
+bunx slidesk@2.6.9 presentation -n -t
 ```
 
 #### Générer un backup des slides
@@ -148,3 +148,15 @@ Mettre un QRCode pour le lien du repo.
 Expliquer l'origine du projet avec.
 
 Mettre dans les notes le lancement de la démo et les transitions.
+
+
+## Retour du tremplin
+
+Moins aimé par Geoffrey:
+
+- "La phrase, les développeurs ça rale un peu." => remplacer par quand je développe, je n'aime pas attendre le build avant de voir le résultat
+
+
+Dire dans conference hall que j'ai gagné le tremplin avec la conf (JUG Summer camp et BDX IO)
+
+Voir pour intégrer le numérique responsable dans l'intérêt de réduire la taille des images.
