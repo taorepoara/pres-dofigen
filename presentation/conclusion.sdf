@@ -3,7 +3,9 @@
 
 /*
 Etape par étape, on a amélioré notre image Docker pour la rendre elligible à la production.
-Il y a certainement d'autres étapes pour l'améliorer.
+
+Next: Il y a certainement d'autres étapes pour l'améliorer.
+Dofigen
 */
 
 | Démo       | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
@@ -26,14 +28,14 @@ Il y a certainement d'autres étapes pour l'améliorer.
 - Intégrer dans Docker Compose
 
 /*
-Dofigen est un projet open source qui peut être amélioré.
+Dofigen est un projet open source dont le code source est sur GitHub et qui peut être amélioré.
 
 On souhaite ajouter de nouvelles fonctionnalités, comme
 - l'extension d'autres fichiers Dofigen
 - la génération d'un fichier lock avec le hash des images sources
 - et l'intégration dans Docker Compose
 
-Venez voir, venez expérimenter, venez contribuer à Dofigen, il est sur Github, et j'ai hâte de voir toutes les nouvelles idées qui pourront en surgir.
+Venez voir, venez expérimenter, venez améliorer Dofigen. J'ai hâte de voir toutes les nouvelles idées qui pourront en surgir.
 */
 
 
