@@ -1,5 +1,5 @@
 
-## Problèmes avec les Dockerfile 🤔 .[steps]
+## Problèmes avec les Dockerfile 🤔 .[steps sbs]
 
 
 // En tant que dev, on a beaucoup de sujets à traîter, les tests, la sécurité, la performance, la lisibilité, la maintenabilité, etc.
@@ -7,30 +7,31 @@
 // J'ai créé Dofigen pour essayer de simplifier la création de Dockerfile et de rendre cette tâche plus accessible.
 
 /*
-dev: beaucoup de sujets à traiter: tests, sécurité, performance, lisibilité, maintenabilité, etc.
+dev: beaucoup de sujets à traiter: tests, sécurité, performance, maintenabilité, etc.
 pas le temps et l'envie de comprendre les conteneurs
 
-Avant de commencer, Sondage
+Sondage
 
 Pour ceux qui ne savent pas
-le layer est un niveau de construction d'une image. équivalent d'un commit dans un git
-un builder une image temporaire dans laquelle on peut faire des traîtement dont le résultat pourra être copié dans l'image finale
+le layer: un niveau de construction d'une image. équivalent d'un commit dans un git
+un stage: une image temporaire dans laquelle on peut faire des traîtement dont le résultat pourra être copié dans l'image finale
 */
 
-
-Voici quelques problèmes que j'ai rencontré avec les Dockerfile
+Le dev à tout faire doit-il maîtriser l'écriture de Dockerfile ?
 
 - Qui est développeur ?
 - Qui a déjà écrit un Dockerfile ?
-- Qui comprend le principe des layers et du cache de build dans Docker ?
+- Qui comprend les principe de layers et de stages dans Docker ?
+
 
 /*
-Next: Syntaxe des Dockerfile
+Next: Problèmes que j'ai rencontrer avec les Dockerfile
+Syntaxe des Dockerfile
 */
 
 ## Un nouveau "langage" à apprendre 🤯
 
-Quand tu décides de faire ton premier Dockerfile
+Quand tu décides de faire ton premier Dockerfile:
 
 <img src="./bored-sigh.gif" style="width: 50vw;" />
 
@@ -43,19 +44,21 @@ syntaxe en commandes
 
 ## Les Dockerfile sont souvent longs et complexes 📜
 
-Quand tu lis un Dockerfile pour la première fois
+Quand tu lis un Dockerfile pour la première fois:
 
 <img src="./theoffice-michael-scott.gif" style="width: 50vw;" />
 
 /*
 les layers et builders pas toujours bien compris
 
+On s'y perd
+
 Next: Une fois qu'on a réussi à créer son image Docker, on se rend compte qu'on a pas respecté les bonnes pratiques pour l'envoyer en prod
 */
 
 ## Pas de "bonnes pratiques" par défaut 😑
 
-Quand tu envoies en prod
+Quand tu envoies en prod:
 
 <img src="./silicon-valley-fire.gif" style="width: 50vw;" />
 
@@ -74,9 +77,9 @@ J'ai créé Dofigen comme un projet à part et qui est utilisé comme dépendanc
 
 Dofigen: Docker file generator
 
-- syntaxe: simple à lire et à écrire + facile à modifier via un script (yq, jq) + facile de voir les builders
+- syntaxe: simple à lire et à écrire + facile à modifier via un script + facile de voir les stages
 - layers: ordre des définitions n'a pas d'importance (dans un même niveau) + Gestion de cache plus simple
-- bonnes pratiques: rootless par défaut + `.gitignore` dans le même fichier et peut être défini par ajout  plutôt que suppression
+- bonnes pratiques: rootless par défaut + `.dockerignore` dans le même fichier et peut être défini par ajout plutôt que suppression
 */
 
 - Syntaxe en YAML (ou JSON) 📝

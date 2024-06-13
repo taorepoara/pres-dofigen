@@ -13,14 +13,18 @@ Comprendre par l'exemple
 </div>
 
 /*
-Projet SpringBoot simple
+Projet SpringBoot de base
 133 dépendances pour un total de 45 Mo
 
+> Objectifs
 🪶: Image légère pour la charger plus rapidement
 🚀: Démarrage rapide pour avoir accès 
 ⌛: Rebuild rapide pour ne pas perdre de temps lors du développement
 🛡️: Sans JDK pour éviter de permettre de build une classe Java directement
 😷: Utilisateur non-root pour limiter les possibilitées d'attaques
+
+LANCER LA DEMO 1
+
 */
 
 ## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
@@ -48,12 +52,11 @@ Problème: les dépendances sont chargées à chaque démarrage
 ## v1: Le Dockerfile de base .[sbs]
 
 /*
-LANCER LA DEMO 1
-
 On compile le projet avec maven
 On renome le jar pour qu'il soit plus facilement accessible
 On modifie la commande de démarrage pour lancer le jar
 
+Terminal: résultat
 Next: Il reste des problèmes
 */
 
@@ -91,6 +94,7 @@ CMD ["java","-jar","app.jar"]
 </div>
 
 /*
+> Du mieux:
 dépendances à la compilation => 
 
 Amélioration du temps de démarrage

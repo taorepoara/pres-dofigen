@@ -12,7 +12,7 @@ custom_css: custom.css
 
 /*
 - Présentation: dev depuis 15 ans, galère pour mettre en ligne
-- Objectif: créer des images Docker pour envoyer vos projets en production en respectant les bonnes pratiques
+- Objectif: créer des images Docker pour envoyer vos projets en production en respectant les bonnes pratiques grâce à Dofigen
 */
 
 !include(intro.sdf)
