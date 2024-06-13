@@ -19,7 +19,7 @@ Dofigen
 
 ## Dofigen: un projet Open Source
 
-<img class="qrcode" src="./qrcode.png" />
+<img class="qrcode" src="./qrcode-github.png" />
 
 <a class="marge" href="https://github.com/lenra-io/dofigen">github.com/lenra-io/dofigen</a>
 
@@ -28,14 +28,14 @@ Dofigen
 - Intégrer dans Docker Compose
 
 /*
-Dofigen est un projet open source dont le code source est sur GitHub et qui peut être amélioré.
+Dofigen est un projet open source dont le code est sur GitHub.
 
 On souhaite ajouter de nouvelles fonctionnalités, comme
 - l'extension d'autres fichiers Dofigen
 - la génération d'un fichier lock avec le hash des images sources
 - et l'intégration dans Docker Compose
 
-Venez voir, venez expérimenter, venez améliorer Dofigen. J'ai hâte de voir toutes les nouvelles idées qui pourront en surgir.
+Venez voir, venez expérimenter, venez contribuer à Dofigen. J'ai hâte de voir toutes les nouvelles idées qui pourront en surgir.
 */
 
 
@@ -52,3 +52,5 @@ Des questions ?
 @taorepoara - Thomas DA ROCHA
 
 Dev depuis 2007 et CTO de Lenra
+
+<img class="qrcode" src="./qrcode-openfeedback.png" />
