@@ -24,7 +24,7 @@ cd /home/taorepoara/presentations/devquest-2024
 Dans un autre terminal:
 
 ```console
-bunx slidesk@2.6.9 presentation -n -t
+bunx slidesk@2.7.0 presentation -n -t
 ```
 
 #### Générer un backup des slides
@@ -33,130 +33,9 @@ bunx slidesk@2.6.9 presentation -n -t
 bunx slidesk presentation -s backup
 ```
 
-### Les tests
-
-```console
-export num=0
-./build.sh
-docker run --rm -it -p 8080:8080 devquest-${num}
-./stats.sh
-```
 
 ### lancer le projet en local
 
 ```console
 ./mvnw spring-boot:run
 ```
-
-
-## Notes
-
-Ce coaching serait réussi si:
-- Je n'ai pas peur d'être ridicule de ma présentation (peur de que des personnes plus techiniques que moi me jugent)
-  - S'il voient la valeur de l'outil, ils vont voir l'intérêt
-- Qu'on arrive à rendre la présentation intéressante et facile à comprendre pour tout le monde
-
-
-# Préparer un plan du talk:
-## intro: poser la problématique et ce qui ne me plait pas dans la création d'image Docker actuellemnt (pourquoi j'ai créé Dofigen)
-## quels concepts sont derrières Dofigen
-## comment ça marche
-## 
-## PKI: temps de compilation, taille des images, temps de mise en place des images, lisibilité du Dockerfile
-## Conclusion: pourquoi Dofigen est une solution à ces problèmes, 
-
-
-# plan
-
-Intro
-Poser le problème + ton retour d'expérience lié à ce problème
-Quel concept répond à ce problème  ?
-Comment ce concept est implémenter dans Dofigen ?
-Comment Dofigen aide à résoudre le problème initial ?
-Montrer des bénéfices quantifiables: Temps gagné , énergie fournie , Ressenti après utilisation, etc..
-Conclusion 
-
-
-En suivant cette doc: https://spring.io/guides/gs/rest-service
-
-Création d'un projet généré avec [Spring Initializr](https://start.spring.io/) (Maven, Spring Boot 2.5.4, Jar, Java 17, Spring Web)
-
-En suivant cette doc: 
-
-
-
-## Debreifing
-
-Pour les problématiques, séparer en trois slides (une slide par problématique) et pour chaque problématique, mettre une image en face pour illustrer le problème.
-
-4 min pour l'intro
-
-Faire des alias shell pour les commandes plutôt que de les écrire à chaque fois un seul script qui fait tout.
-
-Expliciter le nombre des dépendances et leur poid.
-449 dépendances dont 133 jar pour un total de 45 Mo
-
-Pour l'URL faire un curl ou un lien vers la page
-
-Pour la v1 (et chaque version suivante):
- faire un highlight les différences dans le code
- ne pas expliciter les métriques et les problèmes, mais juste dire qu'il n'y a pas de surprise/changement et plus insiter sur les avantages
-
-
-Faire que Dofigen ajoute un commentaire dans le Dockerfile pour dire que c'est généré par Dofigen avec la version
-
-
-
-Demo time 3:20
-
-v1: 4:00
-
-v2: 6:47
-
-v3: 8:40
-
-v4: 10:37
-
-benchmark 13:27
-
-Fonctionnalités 14:00
-
-fin à 15:16
-
-
-Voir si on garde la v0 ou pas (voir partiellement)
-
-Ne lancer la démo que pour les v1 et v4 
-
-Supprimer le dockerfile généré par la v4
-
-
-Temps de build quand tout va bien (temps de récupération des dépendances)
-- v1: 54s
-- v4: 31s
-
-
-Voir si la dualité de l'image (build et run) est pertinente pour Niort
-
-
-## Retour du 23/05
-
-Mettre le code en plus gros.
-
-Mettre un QRCode pour le lien du repo.
-
-Expliquer l'origine du projet avec.
-
-Mettre dans les notes le lancement de la démo et les transitions.
-
-
-## Retour du tremplin
-
-Moins aimé par Geoffrey:
-
-- "La phrase, les développeurs ça rale un peu." => remplacer par quand je développe, je n'aime pas attendre le build avant de voir le résultat
-
-
-Dire dans conference hall que j'ai gagné le tremplin avec la conf (JUG Summer camp et BDX IO)
-
-Voir pour intégrer le numérique responsable dans l'intérêt de réduire la taille des images.
