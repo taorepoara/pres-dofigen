@@ -1,0 +1,47 @@
+## v3: Optimiser la taille de l'image .[sbs]
+
+```yaml
+builders:
+  package:
+    fromImage: maven:3.9-eclipse-temurin-17-alpine
+    copy: "."
+    root:
+      run: mvn clean package -DskipTests
+fromImage: eclipse-temurin:17-jre-alpine
+copy:
+  - fromBuilder: package
+    paths: target/*.jar
+    target: app.jar
+cmd: [ java, -jar, app.jar ]
+```
+
+/*
+Définition d'un builder basé sur une image maven alpine (légère)
+Utilisation de maven sans wrapper
+Image finale basée sur JRE alpine
+Récupération du JAR en tant qu'artefact depuis le builder
+*/
+
+## v3: Optimiser la taille de l'image .[sbs]
+
+| Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK	 |
+|-------------|-----------|-------------|---------------|---------|------------|
+| 185 Mo      | 3s        | 20s         | =             | 1000    | Oui        |
+
+### Problèmes
+
+- Chargement des libs à chaque build 📚
+
+<div class="step" markdown>
+### Du mieux
+
+- Taille de l'image divisée par 3,5 🪶
+- Plus de JDK dans l'image finale 🛡️
+</div>
+
+/*
+Taille de l'image divisée par 3,5 🪶
+Plus de JDK dans l'image finale 🛡️
+
+Next: Réduire le temps de build
+*/

@@ -1,0 +1,49 @@
+effective: |
+  builders:
+    package:
+      fromImage:
+        path: maven
+        digest: sha256:a83a1692b72b4225a9c6357781b9fc1b4abce0abcb2fc5d715adb90372607b05
+      copy:
+      - paths:
+        - .
+      root:
+        run:
+        - mvn clean package -DskipTests
+  fromImage:
+    path: eclipse-temurin
+    digest: sha256:31c3cc1b2b02ae43a3af8a34b0d4a20208818355b68f3112933f9e8fa5be9a3b
+  copy:
+  - fromBuilder: package
+    paths:
+    - target/*.jar
+    target: app.jar
+  cmd:
+  - java
+  - -jar
+  - app.jar
+images:
+  registry.hub.docker.com:443:
+    library:
+      maven:
+        3.9-eclipse-temurin-17-alpine:
+          digest: sha256:a83a1692b72b4225a9c6357781b9fc1b4abce0abcb2fc5d715adb90372607b05
+      eclipse-temurin:
+        17-jre-alpine:
+          digest: sha256:31c3cc1b2b02ae43a3af8a34b0d4a20208818355b68f3112933f9e8fa5be9a3b
+resources:
+  dofigen.yml:
+    hash: 8c1fbd673538f64d3109ae237cddca22d79fe2d26f62e279f6e4b19f5157acba
+    content: |-
+      builders:
+        package:
+          fromImage: maven:3.9-eclipse-temurin-17-alpine
+          copy: "."
+          root:
+            run: mvn clean package -DskipTests
+      fromImage: eclipse-temurin:17-jre-alpine
+      copy:
+        - fromBuilder: package
+          paths: target/*.jar
+          target: app.jar
+      cmd: [ java, -jar, app.jar ]

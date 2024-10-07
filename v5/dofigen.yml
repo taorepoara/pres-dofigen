@@ -1,0 +1,1 @@
+extend: https://raw.githubusercontent.com/lenra-io/dofigen-hub/main/jvm/maven-jar.image.yml

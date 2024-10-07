@@ -1,0 +1,29 @@
+## v1: Le Dockerfile de base .[sbs]
+
+| Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK	 |
+|-------------|-----------|-------------|---------------|---------|------------|
+| 541 Mo      | 3s        | 20s         | =             | root    | Non        |
+
+### Problèmes
+
+- Image lourde 🪨
+- Contient le JDK 🐛
+- Chargement des libs à chaque build 📚
+- Utilisateur root 🧑‍💻
+
+<div class="step" markdown>
+### Du mieux
+
+- Amélioration du temps de démarrage 🚀
+- Plus besoin d'accès internet ⛓️‍💥
+</div>
+
+/*
+> Du mieux:
+dépendances à la compilation => 
+
+Amélioration du temps de démarrage
+Plus besoin d'accès internet
+
+Next: Transformation pour Dofigen
+*/

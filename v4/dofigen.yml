@@ -1,21 +1,23 @@
+context:
+  - /pom.xml
+  - /src/main/
 builders:
-  - from: maven:3.9-eclipse-temurin-17-alpine
+  package:
+    fromImage: maven:3.9-eclipse-temurin-17-alpine
     workdir: /app
-    add:
-      - "."
     root:
+      bind:
+        - pom.xml
+        - src
       run:
         - mvn package -DskipTests
         - mv target/*.jar app.jar
       cache:
         - /root/.m2
-        - /app/target
-from: eclipse-temurin:17-jre-alpine
-artifacts:
-  - builder: builder-0
-    source: /app/app.jar
+        - target
+fromImage: eclipse-temurin:17-jre-alpine
+copy:
+  - fromBuilder: package
+    paths: /app/app.jar
     target: app.jar
-cmd: ["java","-jar","app.jar"]
-context:
-  - /pom.xml
-  - /src/main/
+cmd: [ java, -jar, app.jar ]

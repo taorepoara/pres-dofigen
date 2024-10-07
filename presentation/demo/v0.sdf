@@ -1,0 +1,40 @@
+## v0: 🛑 Le Dockerfile à ne pas faire .[sbs]
+
+```dockerfile
+FROM eclipse-temurin:17-jdk
+COPY . .
+CMD ./mvnw spring-boot:run
+```
+
+### Gros Problème
+
+Chargement des dépendances au démarrage...
+
+/*
+Plus intuitif
+
+From: image depuis laquelle on part
+Copy: copie des fichiers dans l'image
+Cmd: commande exécutée au démarrage
+
+Problème: les dépendances sont chargées à chaque démarrage
+*/
+
+## v1: Le Dockerfile de base .[sbs]
+
+/*
+On compile le projet avec maven
+On renome le jar pour qu'il soit plus facilement accessible
+On modifie la commande de démarrage pour lancer le jar
+
+Terminal: résultat
+Next: Il reste des problèmes
+*/
+
+```dockerfile
+FROM eclipse-temurin:17-jdk
+COPY . .
+RUN ./mvnw clean package -DskipTests
+RUN mv target/*.jar app.jar
+CMD ["java","-jar","app.jar"]
+```
