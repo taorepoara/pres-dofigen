@@ -1,8 +1,10 @@
-from: eclipse-temurin:17-jdk
-add:
-  - "."
+fromImage: eclipse-temurin:17-jdk
+copy: "."
 root:
   run:
     - ./mvnw clean package -DskipTests
     - mv target/*.jar app.jar
-cmd: ["java","-jar","app.jar"]
+cmd:
+  - java
+  - -jar
+  - app.jar

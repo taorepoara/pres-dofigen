@@ -1,0 +1,80 @@
+effective: |
+  context:
+  - /pom.xml
+  - /src/main/
+  builders:
+    maven-package:
+      fromImage:
+        path: maven
+        digest: sha256:a83a1692b72b4225a9c6357781b9fc1b4abce0abcb2fc5d715adb90372607b05
+      workdir: /app
+      root:
+        run:
+        - mvn package -DskipTests
+        - mv target/*.jar /tmp/app.jar
+        cache:
+        - target: /root/.m2
+        - target: target
+        bind:
+        - target: pom.xml
+          source: pom.xml
+        - target: src
+          source: src
+  fromImage:
+    path: eclipse-temurin
+    digest: sha256:31c3cc1b2b02ae43a3af8a34b0d4a20208818355b68f3112933f9e8fa5be9a3b
+  workdir: /app
+  copy:
+  - fromBuilder: maven-package
+    paths:
+    - /tmp/app.jar
+    target: app.jar
+  cmd:
+  - java
+  - -jar
+  - app.jar
+images:
+  registry.hub.docker.com:443:
+    library:
+      eclipse-temurin:
+        17-jre-alpine:
+          digest: sha256:31c3cc1b2b02ae43a3af8a34b0d4a20208818355b68f3112933f9e8fa5be9a3b
+      maven:
+        3-eclipse-temurin-17-alpine:
+          digest: sha256:a83a1692b72b4225a9c6357781b9fc1b4abce0abcb2fc5d715adb90372607b05
+resources:
+  https://raw.githubusercontent.com/lenra-io/dofigen-hub/main/jvm/maven-package.builder.yml:
+    hash: e369b4566123dd0237999cd811cee867dc7be208fd4b6542b8b436f93923a503
+    content: |
+      context:
+        - /pom.xml
+        - /src/main/
+      builders:
+        maven-package:
+          fromImage: maven:3-eclipse-temurin-17-alpine
+          workdir: /app
+          root:
+            bind:
+              - pom.xml
+              - src
+            run:
+              - mvn package -DskipTests
+              - mv target/*.jar /tmp/app.jar
+            cache:
+              - /root/.m2
+              - target
+  dofigen.yml:
+    hash: 97b7411f294776e795bc2cf70850cbe7866fc545598af438881b162e893c325f
+    content: |
+      extend: https://raw.githubusercontent.com/lenra-io/dofigen-hub/main/jvm/maven-jar.image.yml
+  https://raw.githubusercontent.com/lenra-io/dofigen-hub/main/jvm/maven-jar.image.yml:
+    hash: d5e85c6657f13644cc0a4f3a811710db9496c2170ebec2a979206ea5900eabef
+    content: |
+      extend: ./maven-package.builder.yml
+      fromImage: eclipse-temurin:17-jre-alpine
+      workdir: /app
+      copy:
+        - fromBuilder: maven-package
+          paths: /tmp/app.jar
+          target: app.jar
+      cmd: [ java, -jar, app.jar ]

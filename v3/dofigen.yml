@@ -1,13 +1,12 @@
 builders:
-  - from: maven:3.9-eclipse-temurin-17-alpine
-    add:
-      - "."
+  package:
+    fromImage: maven:3.9-eclipse-temurin-17-alpine
+    copy: "."
     root:
-      run:
-        - mvn clean package -DskipTests
-from: eclipse-temurin:17-jre-alpine
-artifacts:
-  - builder: builder-0
-    source: target/*.jar
+      run: mvn clean package -DskipTests
+fromImage: eclipse-temurin:17-jre-alpine
+copy:
+  - fromBuilder: package
+    paths: target/*.jar
     target: app.jar
-cmd: ["java","-jar","app.jar"]
+cmd: [ java, -jar, app.jar ]

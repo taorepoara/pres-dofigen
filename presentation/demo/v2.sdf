@@ -1,0 +1,46 @@
+## v2: Tranformation pour Dofigen .[sbs]
+
+```yaml
+fromImage: eclipse-temurin:17-jdk
+copy: "."
+root:
+  run:
+    - ./mvnw clean package -DskipTests
+    - mv target/*.jar app.jar
+cmd:
+  - java
+  - -jar
+  - app.jar
+```
+
+/*
+On prend les champs correspondants aux commandes du Dockerfile
+Le seul changement est la définition de la commande en tant que root, car par défaut non-root
+*/
+
+## v2: Tranformation pour Dofigen .[sbs]
+
+| Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK	 |
+|-------------|-----------|-------------|---------------|---------|------------|
+| 521 Mo      | 3s        | 20s         | =             | 1000    | Non        |
+
+### Problèmes
+
+- Image lourde 🪨
+- Contient le JDK 🐛
+- Chargement des libs à chaque build 📚
+
+<div class="step" markdown>
+### Du mieux
+
+- Utilisateur non-root 😷
+- On gagne 20 Mo sur l'image 💇
+
+/*
+Utilisateur non root
+20 Mo de moins: pas grand chose, équivalent à une coupe de cheuveux
+C'est dû aux RUN passés sur une seule commande
+
+Next: Réduire la taille de l'image
+*/
+</div>

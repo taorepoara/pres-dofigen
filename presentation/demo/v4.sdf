@@ -1,0 +1,62 @@
+## v4: Gestion du cache .[sbs]
+
+```yaml
+context:
+  - /pom.xml
+  - /src/main/
+builders:
+  package:
+    fromImage: maven:3.9-eclipse-temurin-17-alpine
+    workdir: /app
+    root:
+      bind:
+        - pom.xml
+        - src
+      run:
+        - mvn package -DskipTests
+        - mv target/*.jar app.jar
+      cache:
+        - /root/.m2
+        - target
+fromImage: eclipse-temurin:17-jre-alpine
+copy:
+  - fromBuilder: package
+    paths: /app/app.jar
+    target: app.jar
+cmd: [ java, -jar, app.jar ]
+```
+
+/*
+LANCER LA DEMO 4
+
+Ajout d'un workdir, car le cache est défini de manière absolue
+Définition de deux caches:  dépendances maven + build du projet
+Déplacement du jar en dehors du dossier target qui est en cache
+
+Définition du contexte pour ne charger que ce qui est nécessaire
+*/
+
+## v4: Gestion du cache .[sbs]
+
+| Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK	 |
+|-------------|-----------|-------------|---------------|---------|------------|
+| 185 Mo      | 3s        | 20s         | 5s            | 1000    | Oui        |
+
+<div class="step" markdown>
+### Du mieux
+
+- Chargement des libs une fois 🎒
+- Temps de rebuild divisé par 4 ⌛
+
+/*
+Il garde les libs dans le cache, et ne les recharge pas à chaque build
+
+On a enfin une image qui répond à tous nos objectifs !
+*/
+</div>
+
+<div class="step approved"></div>
+
+/*
+Next: On pourrait aller plus loin
+*/

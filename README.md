@@ -17,20 +17,20 @@ docker pull eclipse-temurin:17-jre-alpine
 Lancer un terminale et exécuter la commande suivante:
 
 ```console
-cd /home/taorepoara/presentations/devquest-2024
+cd /home/taorepoara/presentations/pres-dofigen
 ```
 
 
 Dans un autre terminal:
 
 ```console
-bunx slidesk@2.7.0 presentation -n -t
+bunx slidesk@2.7.7 presentation -n -t
 ```
 
 #### Générer un backup des slides
 
 ```console
-bunx slidesk presentation -s backup
+bunx slidesk@2.7.7 presentation -s backup
 ```
 
 
