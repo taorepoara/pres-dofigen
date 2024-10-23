@@ -53,6 +53,14 @@
   }
 }
 
+#xterm {
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  display: none;
+  visibility: hidden;
+}
+
 .sd-app::after {
   content: "";
   position: fixed;
