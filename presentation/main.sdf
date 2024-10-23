@@ -1,5 +1,6 @@
 /::
-custom_css: custom.css
+custom_css: main.css
+add_scripts: main.js
 ::/
 
 # 🐋 Simplifiez la conteneurisation de vos idées !

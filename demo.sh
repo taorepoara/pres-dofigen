@@ -51,7 +51,7 @@ eval_time() {
 }
 
 #reset
-echo "defaultGreeting=World" > src/main/resources/application.properties
+echo "defaultGreeting=World" > project/src/main/resources/application.properties
 eval_nooutput "docker builder prune --filter type=exec.cachemount -f"
 export DOCKER_BUILDKIT=1
 
@@ -64,7 +64,7 @@ fi
 
 # Build de l'image
 log "Build de l'image"
-eval_time "docker build -t devquest-${num} -f v${num}/Dockerfile --no-cache $progress ."
+eval_time "docker build -t devquest-${num} -f v${num}/Dockerfile --no-cache $progress project"
 build_time="$exec_time"
 
 # Récupération du temps de build
@@ -90,8 +90,8 @@ eval_nooutput "docker stop devquest-${num}"
 
 # Temps de rebuild après modification
 log "Rebuild après modification"
-echo "defaultGreeting=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13)" > src/main/resources/application.properties
-eval_time "docker build -t devquest-${num} -f v${num}/Dockerfile $progress ."
+echo "defaultGreeting=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13)" > project/src/main/resources/application.properties
+eval_time "docker build -t devquest-${num} -f v${num}/Dockerfile $progress project"
 
 rebuild_time="$exec_time"
 

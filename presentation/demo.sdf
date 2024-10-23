@@ -27,4 +27,10 @@ LANCER LA DEMO 1
 
 */
 
+<button onclick="openCode()">VS Code</button>
+
+<div class="xterm" style="display: none;"></div>
+
+/*
 !include(demo)
+*/
