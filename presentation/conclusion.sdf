@@ -5,16 +5,15 @@
 Etape par étape, on a amélioré notre image Docker pour la rendre elligible à la production.
 
 Next: Il y a certainement d'autres étapes pour l'améliorer.
-Dofigen
+Dofigen: Open Source
 */
 
-| Démo       | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
-|------------|-------------|-----------|-------------|---------------|---------|------------|
-| v0 🛑      | 427 Mo      | 20s       | 1s          | =             | root    | Non        |
-| v1 Base    | 541 Mo      | 3s        | 20s         | =             | root    | Non        |
-| v2 Dofigen | 521 Mo      | 3s        | 20s         | =             | 1000    | Non        |
-| v3 Builder | 185 Mo      | 3s        | 20s         | =             | 1000    | Oui        |
-| v4 Cache   | 185 Mo 🪶   | 3s 🚀     | 20s         | 5s ⌛         | 1000 😷 | Oui 🛡️     |
+| Démo           | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
+|----------------|-------------|-----------|-------------|---------------|---------|------------|
+| v1 Base        | 280 Mo      | 3s        | 25s         | =             | 1000    | Non        |
+| v2 Tiny Image  | 78 Mo       | 3s        | 25s         | =             | 1000    | Non        |
+| v3 Fast Build  | 78 Mo       | 3s        | 25s         | 5s            | 1000    | Oui        |
+| v4 Dofigen Hub | 78 Mo 🪶    | 3s 🚀     | 25s         | 5s ⌛         | 1000 😷 | Oui 🛡️     |
 
 
 ## Dofigen: un projet Open Source
@@ -23,17 +22,17 @@ Dofigen
 
 <a class="marge" href="https://github.com/lenra-io/dofigen">github.com/lenra-io/dofigen</a>
 
-- Etendre d'autres fichiers Dofigen
-- Générer un fichier de lock avec les hash des images
-- Intégrer dans Docker Compose
+- Autocomplétion dans les IDE
+- Indiquer les améliorations
+- Faciliter les builds multi-plateformes
 
 /*
 Dofigen est un projet open source dont le code est sur GitHub.
 
 On souhaite ajouter de nouvelles fonctionnalités, comme
-- l'extension d'autres fichiers Dofigen
-- la génération d'un fichier lock avec le hash des images sources
-- et l'intégration dans Docker Compose
+- avoir de l'autocomplétion dans les IDE
+- indiquer les améliorations notamment pour les bonnes pratiques
+- et faciliter les builds multi-plateformes
 
 Venez voir, venez expérimenter, venez contribuer à Dofigen. J'ai hâte de voir toutes les nouvelles idées qui pourront en surgir.
 */
@@ -53,4 +52,4 @@ Des questions ?
 
 Dev depuis 2007 et CTO de Lenra
 
-<img class="qrcode" src="./qrcode-openfeedback.png" />
+<img class="qrcode" src="./qrcode-openfeedback.svg" />

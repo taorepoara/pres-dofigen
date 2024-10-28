@@ -1,15 +1,15 @@
-# v3 - Ajout d'un builder pour optimiser la taille de l'image
+# v4 - Gestion du cache
 
-Séparation du build et de l'exécution, et utilisation d'images alpine pour optimiser la taille de l'image.
+Ajout du dockerignore pour ne charger que ce qui est nécessaire pour le build.
+Cache des dépendances Maven pour ne pas les recharger à chaque build.
+Cache du dossier target pour ne pas le recompiler ce qui n'est pas nécessaire (oblige à déplacer le jar et a définir le workspace, car le cache et une valeur absolue).
+
 
 Le build est rapide: 13s
-Le temps de rebuild: équivalent
+Le temps de rebuild: 6s
 L'image plus légère: 185M.
 Utilisateur: 1000
 
-Problèmes:
-- A chaque fois qu'on build, on télécharge les dépendances
-
 Du mieux:
-- Taille de l'image divisée par 3,5
-- Plus de JDK dans l'image finale
+- On ne télécharge les dépandances Maven qu'une fois
+- Le temps de buidl est divisé par deux

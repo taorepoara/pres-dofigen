@@ -1,0 +1,12 @@
+# Image de base
+fromImage: eclipse-temurin:17-jdk
+# Copie du projet dans le conteneur
+copy: "."
+root:
+  run:
+    # Compilation du projet en un JAR
+    - ./mvnw package -DskipTests
+    # Déplacement du JAR généré
+    - mv target/*.jar app.jar
+# Commande de démarrage
+cmd: [java, -jar, app.jar]
