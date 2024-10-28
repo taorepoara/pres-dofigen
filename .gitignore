@@ -35,3 +35,7 @@ build/
 /v*/context.*
 
 /backup/
+
+/project/dofigen.*
+/project/Dockerfile
+/project/.dockerignore

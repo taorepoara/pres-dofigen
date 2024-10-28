@@ -1,10 +1,18 @@
-fromImage: eclipse-temurin:17-jdk
-copy: "."
-root:
-  run:
-    - ./mvnw clean package -DskipTests
-    - mv target/*.jar app.jar
-cmd:
-  - java
-  - -jar
-  - app.jar
+builders:
+  # Un builder qui va générer le JAR
+  package:
+    # Image Maven
+    fromImage: maven:3.9-eclipse-temurin-17-alpine
+    # Copie du projet
+    copy: "."
+    # Compilation du projet en un JAR
+    run: mvn package -DskipTests
+# Image Java (JRE)
+fromImage: eclipse-temurin:17-jre-alpine
+# Copie du JAR généré
+copy:
+  - fromBuilder: package
+    paths: target/*.jar
+    target: app.jar
+# Commande de démarrage
+cmd: [ java, -jar, app.jar ]

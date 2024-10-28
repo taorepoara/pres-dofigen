@@ -1,9 +1,9 @@
-# v1 - Le Dockerfile de base
+# v2 - Tranformation pour Dofigen
 
 Le build est rapide: 13s
 Le temps de rebuild: équivalent
-L'image est lourde: 541M.
-Utilisateur: root
+L'image est lourde: 521M.
+Utilisateur: 1000
 
 Problèmes:
 - Image lourde
@@ -11,4 +11,5 @@ Problèmes:
 - A chaque fois qu'on build, on télécharge les dépendances
 
 Du mieux:
-- Amélioration du temps de démarrage
+- Utilisateur non-root
+- On gagne 20M sur l'image

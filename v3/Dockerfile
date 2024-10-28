@@ -4,11 +4,16 @@
 
 # package
 FROM maven@sha256:a83a1692b72b4225a9c6357781b9fc1b4abce0abcb2fc5d715adb90372607b05 AS package
-COPY \
-    --link \
-    "." "./"
-USER 0:0
-RUN mvn clean package -DskipTests
+WORKDIR /app
+RUN \
+    --mount=type=bind,target=pom.xml,source=pom.xml \
+    --mount=type=bind,target=src,source=src \
+    --mount=type=cache,target=/root/.m2,sharing=locked \
+    --mount=type=cache,target=/app/target,sharing=locked \
+    <<EOF
+mvn package -DskipTests
+mv target/*.jar app.jar
+EOF
 
 # runtime
 FROM eclipse-temurin@sha256:31c3cc1b2b02ae43a3af8a34b0d4a20208818355b68f3112933f9e8fa5be9a3b AS runtime
@@ -16,6 +21,6 @@ COPY \
     --from=package \
     --chown=1000:1000 \
     --link \
-    "target/*.jar" "app.jar"
+    "/app/app.jar" "app.jar"
 USER 1000:1000
 CMD ["java", "-jar", "app.jar"]

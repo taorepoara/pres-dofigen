@@ -1,0 +1,37 @@
+effective: |
+  fromImage:
+    path: eclipse-temurin
+    digest: sha256:4b2851daf1f84dfc80b2574de320a6040fb91ddd409f60ac0482f5bcb8d46dea
+  copy:
+  - paths:
+    - .
+  root:
+    run:
+    - ./mvnw clean package -DskipTests
+    - mv target/*.jar app.jar
+  cmd:
+  - java
+  - -jar
+  - app.jar
+images:
+  registry.hub.docker.com:443:
+    library:
+      eclipse-temurin:
+        17-jdk:
+          digest: sha256:4b2851daf1f84dfc80b2574de320a6040fb91ddd409f60ac0482f5bcb8d46dea
+resources:
+  dofigen.yml:
+    hash: a34662c0a738f6038f3b0228e5543d009f8b1750fb2a83227bbb0f2534cb6384
+    content: |-
+      # Image de base
+      fromImage: eclipse-temurin:17-jdk
+      # Copie du projet dans le conteneur
+      copy: "."
+      root:
+        run:
+          # Compilation du projet en un JAR
+          - ./mvnw clean package -DskipTests
+          # Déplacement du JAR généré
+          - mv target/*.jar app.jar
+      # Commande de démarrage
+      cmd: [java, -jar, app.jar]

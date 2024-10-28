@@ -1,12 +1,26 @@
+# Context de build de l'image Docker
+context:
+  - /pom.xml
+  - /src/main/
 builders:
   package:
     fromImage: maven:3.9-eclipse-temurin-17-alpine
-    copy: "."
-    root:
-      run: mvn clean package -DskipTests
+    # Définission du répertoire de travail pour le cache
+    workdir: /app
+    # Remplacement du copy par bind
+    bind:
+      - pom.xml
+      - src
+    run:
+      - mvn package -DskipTests
+      - mv target/*.jar app.jar
+    # Mise en cache des dépendances et des classes générées
+    cache:
+      - /root/.m2
+      - target
 fromImage: eclipse-temurin:17-jre-alpine
 copy:
   - fromBuilder: package
-    paths: target/*.jar
+    paths: /app/app.jar
     target: app.jar
 cmd: [ java, -jar, app.jar ]
