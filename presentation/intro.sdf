@@ -2,7 +2,7 @@
 ## Problèmes avec les Dockerfile 🤔 .[steps sbs]
 
 
-// En tant que dev, on a beaucoup de sujets à traîter, les tests, la sécurité, la performance, la lisibilité, la maintenabilité, etc.
+// En tant que dev, on a beaucoup de sujets à traiter, les tests, la sécurité, la performance, la lisibilité, la maintenabilité, etc.
 // Et on a pas forcément envie de passer du temps à comprendre comment fonctionne la création de conteneurs pour déployer nos projets.
 // J'ai créé Dofigen pour essayer de simplifier la création de Dockerfile et de rendre cette tâche plus accessible.
 
@@ -21,11 +21,11 @@ Le dev à tout faire doit-il maîtriser l'écriture de Dockerfile ?
 
 - Qui est développeur ?
 - Qui a déjà écrit un Dockerfile ?
-- Qui comprend les principe de layers et de stages dans Docker ?
+- Qui comprend les principes de layers et de stages dans Docker ?
 
 
 /*
-Next: Problèmes que j'ai rencontrer avec les Dockerfile
+Next: Problèmes que j'ai rencontrés avec les Dockerfile
 Syntaxe des Dockerfile
 */
 

@@ -23,16 +23,7 @@ Projet SpringBoot de base
 🛡️: Sans JDK pour éviter de permettre de build une classe Java directement
 😷: Utilisateur non-root pour limiter les possibilitées d'attaques
 
-LANCER LA DEMO 1
 
-*/
+Basculer sur VSCode
 
-/*
-<button onclick="openCode()">VS Code</button>
-
-<div class="xterm" style="display: none;"></div>
-*/
-
-/*
-//!include(demo)
 */
