@@ -1,8 +1,8 @@
 
-## Benchmark .[benchmark]
+## Benchmark .[benchmark sbs]
 
 /*
-Etape par étape, on a amélioré notre image Docker pour la rendre elligible à la production.
+Étape par étape, on a amélioré notre image Docker pour la rendre éligible à la production.
 
 Next: Il y a certainement d'autres étapes pour l'améliorer.
 Dofigen: Open Source
@@ -12,8 +12,14 @@ Dofigen: Open Source
 |----------------|-------------|-----------|-------------|---------------|---------|------------|
 | v1 Base        | 280 Mo      | 3s        | 25s         | =             | 1000    | Non        |
 | v2 Tiny Image  | 78 Mo       | 3s        | 25s         | =             | 1000    | Non        |
-| v3 Fast Build  | 78 Mo       | 3s        | 25s         | 5s            | 1000    | Oui        |
-| v4 Dofigen Hub | 78 Mo 🪶    | 3s 🚀     | 25s         | 5s ⌛         | 1000 😷 | Oui 🛡️     |
+| v3 Fast Build  | 78 Mo 🪶    | 3s 🚀     | 25s         | 5s ⌛         | 1000 😷 | Oui 🛡️     |
+
+<div class="step" markdown>
+### Dofigen Hub
+
+Trouvez une configuration Dofigen pour votre cas d'usage !
+
+</div>
 
 
 ## Dofigen: un projet Open Source
@@ -23,7 +29,7 @@ Dofigen: Open Source
 <a class="marge" href="https://github.com/lenra-io/dofigen">github.com/lenra-io/dofigen</a>
 
 - Autocomplétion dans les IDE
-- Indiquer les améliorations
+- Indiquer les améliorations possibles
 - Faciliter les builds multi-plateformes
 
 /*
