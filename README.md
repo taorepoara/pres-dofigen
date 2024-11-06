@@ -22,7 +22,8 @@ code demo.md -r -g demo.md:1
 
 # Initialiser le projet pour la démo
 cd project/
-rm -f dofigen.yml dofigen.lock Dockerfile .dockerignore
+rm -f dofigen.lock Dockerfile .dockerignore
+echo "" > dofigen.yml
 code dofigen.yml -r
 clear
 ```

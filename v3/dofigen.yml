@@ -11,13 +11,13 @@ builders:
     bind:
       - pom.xml
       - src
-    run:
-      - mvn package -DskipTests
-      - mv target/*.jar app.jar
     # Mise en cache des dépendances et des classes générées
     cache:
       - /root/.m2
       - target
+    run:
+      - mvn package -DskipTests
+      - mv target/*.jar app.jar
 fromImage: eclipse-temurin:17-jre-alpine
 copy:
   - fromBuilder: package
