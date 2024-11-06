@@ -4,14 +4,16 @@
 /*
 Étape par étape, on a amélioré notre image Docker pour la rendre éligible à la production.
 
+Dofigen Hub: ne refaite pas tout de zéro
+
 Next: Il y a certainement d'autres étapes pour l'améliorer.
 Dofigen: Open Source
 */
 
 | Démo           | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
 |----------------|-------------|-----------|-------------|---------------|---------|------------|
-| v1 Base        | 280 Mo      | 3s        | 25s         | =             | 1000    | Non        |
-| v2 Tiny Image  | 78 Mo       | 3s        | 25s         | =             | 1000    | Non        |
+| v1 Base        | 280 Mo      | 3s 🚀     | 25s         | =             | 1000 😷 | Non        |
+| v2 Tiny Image  | 78 Mo 🪶    | 3s 🚀     | 25s         | =             | 1000 😷 | Non        |
 | v3 Fast Build  | 78 Mo 🪶    | 3s 🚀     | 25s         | 5s ⌛         | 1000 😷 | Oui 🛡️     |
 
 <div class="step" markdown>
@@ -49,9 +51,13 @@ Venez voir, venez expérimenter, venez contribuer à Dofigen. J'ai hâte de voir
 /*
 Je suis Thomas DA ROCHA, développeur depuis 2007 et CTO de Lenra.
 
-Merci pour votre attention, j'espère que vous avez apprécié.
+Merci pour votre attention.
+
+N'hésitez pas à me faire des retours sur l'OpenFeedback
 
 Des questions ?
+
+
 */
 
 @taorepoara - Thomas DA ROCHA

@@ -4,6 +4,11 @@
 cd ./project/
 ```
 
+
+
+
+
+
 ## Dofigen de base
 
 ```bash
@@ -28,16 +33,27 @@ curl http://localhost:8081/greeting && echo ""
 docker stop demo
 ```
 
+
+
+
+
 ## Réduction de la taille de l'image
 
-- Ne garder que le JAR SpringBoot pour le runtime.
+280 Mo -> 78 Mo (/3.5)
+
+- Que le JAR SpringBoot pour le runtime.
 - Images Alpine
 
 ```bash
 cp ../v2/dofigen.yml ./dofigen.yml
 ```
 
+
+
+
 ## Optimisation du temps de build
+
+Temps rebuild: 25s -> 5s (/5)
 
 - restriction du contexte
 - utilisation de bind au lieu de copy
@@ -46,6 +62,9 @@ cp ../v2/dofigen.yml ./dofigen.yml
 ```bash
 cp ../v3/dofigen.yml ./dofigen.yml
 ```
+
+
+
 
 ## Dofigen Hub
 
