@@ -1,13 +1,5 @@
 # Démo
 
-```bash
-cd ./project/
-```
-
-
-
-
-
 
 ## Dofigen de base
 
