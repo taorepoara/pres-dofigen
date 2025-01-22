@@ -1,5 +1,9 @@
 {
-  "addScripts": ["./plugins/sbs/sbs.js"],
-  "addStyles": ["./plugins/sbs/sbs.css"],
-  "onSlideChange": "window.slidesk.sbs();"
+	"addScripts": ["./plugins/sbs/sbs.js"],
+	"addStyles": ["./plugins/sbs/sbs.css"],
+	"addSpeakerScripts": ["./plugins/sbs/sbsNotes.js"],
+	"addSpeakerStyles": ["./plugins/sbs/sbsNotes.css"],
+	"onSlideChange": "window.slidesk.sbs();",
+	"onSpeakerViewSlideChange": "window.slidesk.sbs();",
+	"files": ["sbs.js", "sbs.css", "sbsNotes.js", "sbsNotes.css"]
 }

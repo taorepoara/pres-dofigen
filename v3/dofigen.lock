@@ -42,7 +42,7 @@ images:
           digest: sha256:31c3cc1b2b02ae43a3af8a34b0d4a20208818355b68f3112933f9e8fa5be9a3b
 resources:
   dofigen.yml:
-    hash: d929970767f23694fde942813bb8f8cc1d7034ed99b01b10de6ee0d30d3a4641
+    hash: 6abc3d80ea884bc31c91bcfccfa6c7dc5099b0a3b1b9315ee346eb5db4167eb2
     content: |
       # Context de build de l'image Docker
       context:
@@ -57,12 +57,13 @@ resources:
           bind:
             - pom.xml
             - src
-          run:
-            - mvn package -DskipTests
-            - mv target/*.jar app.jar
+          # Mise en cache des dépendances et des classes générées
           cache:
             - /root/.m2
             - target
+          run:
+            - mvn package -DskipTests
+            - mv target/*.jar app.jar
       fromImage: eclipse-temurin:17-jre-alpine
       copy:
         - fromBuilder: package
