@@ -15,7 +15,7 @@ docker pull maven:3.9-eclipse-temurin-17-alpine
 docker pull eclipse-temurin:17-jre-alpine
 
 # Lancer la présentation dans un nouveau terminal
-gnome-terminal -- bunx slidesk@2.8.1 presentation -n -t
+gnome-terminal -- bunx slidesk@2.10.1 presentation -n -t
 
 # Ouvrir la doc de démo
 code demo.md -r -g demo.md:1
@@ -36,13 +36,13 @@ Ouvrir la présentation:
 #### Edition avec modifs en live
 
 ```console
-bunx slidesk@2.8.1 presentation -w
+bunx slidesk@2.10.1 presentation -w
 ```
 
 #### Générer un backup des slides
 
 ```console
-bunx slidesk@2.8.1 presentation -s backup
+bunx slidesk@2.10.1 presentation -s backup
 ```
 
 

@@ -64,34 +64,32 @@ fi
 
 # Build de l'image
 log "Build de l'image"
-eval_time "docker build -t devquest-${num} -f v${num}/Dockerfile --no-cache $progress project"
+eval_time "docker build -t demo-${num} -f v${num}/Dockerfile --no-cache $progress project"
 build_time="$exec_time"
 
-# Récupération du temps de build
-# build_time="$(grep "real" .tmp.txt | awk '{print $2}')"
 # Utilisateur dans l'image Docker
-user="$(docker run --rm  devquest-${num} id -u)"
-javac_present="$([ "$(docker run --rm  devquest-${num} which javac)" != "" ] && echo "Présent" || echo "Absent")"
+user="$(docker run --rm  demo-${num} id -u)"
+javac_present="$([ "$(docker run --rm  demo-${num} which javac)" != "" ] && echo "Présent" || echo "Absent")"
 # Taille de l'image
-size="$(docker inspect -f "{{ .Size }}" devquest-${num} | numfmt --to=si)"
+size="$(docker inspect -f "{{ .Size }}" demo-${num} | numfmt --to=si)"
 
 
 # Temps avant premier accès
 log "Lancement de l'image"
 eval_time \
-"docker run --rm -d --name devquest-${num} -p 8080:8080 devquest-${num}" \
+"docker run --rm -d --name demo-${num} -p 8080:8080 demo-${num}" \
 "log 'Attente de la disponibilité'" \
 "while ! curl -s http://localhost:8080/greeting | grep -q 'Hello'; do	sleep 0.1; done"
 
 access_time="$exec_time"
 
-eval_nooutput "docker stop devquest-${num}"
+eval_nooutput "docker stop demo-${num}"
 
 
 # Temps de rebuild après modification
 log "Rebuild après modification"
 echo "defaultGreeting=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13)" > project/src/main/resources/application.properties
-eval_time "docker build -t devquest-${num} -f v${num}/Dockerfile $progress project"
+eval_time "docker build -t demo-${num} -f v${num}/Dockerfile $progress project"
 
 rebuild_time="$exec_time"
 

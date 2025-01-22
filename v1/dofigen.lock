@@ -2,12 +2,14 @@ effective: |
   fromImage:
     path: eclipse-temurin
     digest: sha256:4b2851daf1f84dfc80b2574de320a6040fb91ddd409f60ac0482f5bcb8d46dea
+  workdir: /app
   copy:
   - paths:
     - .
   root:
     run:
-    - ./mvnw clean package -DskipTests
+    - ls -al
+    - ./mvnw package -DskipTests
     - mv target/*.jar app.jar
   cmd:
   - java
@@ -21,16 +23,18 @@ images:
           digest: sha256:4b2851daf1f84dfc80b2574de320a6040fb91ddd409f60ac0482f5bcb8d46dea
 resources:
   dofigen.yml:
-    hash: a34662c0a738f6038f3b0228e5543d009f8b1750fb2a83227bbb0f2534cb6384
+    hash: a37f7fe67b956de8316f078b03b1b3d7443c456233a61a805dd9aaeecafd4e4f
     content: |-
       # Image de base
       fromImage: eclipse-temurin:17-jdk
+      workdir: /app
       # Copie du projet dans le conteneur
       copy: "."
       root:
         run:
+          - ls -al
           # Compilation du projet en un JAR
-          - ./mvnw clean package -DskipTests
+          - ./mvnw package -DskipTests
           # Déplacement du JAR généré
           - mv target/*.jar app.jar
       # Commande de démarrage

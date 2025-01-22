@@ -70,7 +70,7 @@ Quand tu envoies en prod:
 
 /*
 root par défaut sur la plus part des images
-.gitignore fonctionnent à l'inverse selon moi
+.dockerignore fonctionnent à l'inverse selon moi
 
 Next: Comment Dofigen tente de répondre à ces problèmes
 */

@@ -30,17 +30,17 @@ Trouvez une configuration Dofigen pour votre cas d'usage !
 
 <a class="marge" href="https://github.com/lenra-io/dofigen">github.com/lenra-io/dofigen</a>
 
-- Autocomplétion dans les IDE
 - Indiquer les améliorations possibles
 - Faciliter les builds multi-plateformes
+- Faire de Dofigen une syntaxe native pour Docker
 
 /*
 Dofigen est un projet open source dont le code est sur GitHub.
 
 On souhaite ajouter de nouvelles fonctionnalités, comme
-- avoir de l'autocomplétion dans les IDE
 - indiquer les améliorations notamment pour les bonnes pratiques
-- et faciliter les builds multi-plateformes
+- faciliter les builds multi-plateformes
+- et faire de Dofigen une syntaxe native pour Docker
 
 Venez voir, venez expérimenter, venez contribuer à Dofigen. J'ai hâte de voir toutes les nouvelles idées qui pourront en surgir.
 */
@@ -64,4 +64,4 @@ Des questions ?
 
 Dev depuis 2007 et CTO de Lenra
 
-<img class="qrcode" src="./qrcode-openfeedback.svg" />
+// <img class="qrcode" src="./qrcode-openfeedback.svg" />
