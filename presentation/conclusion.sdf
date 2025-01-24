@@ -2,7 +2,7 @@
 ## Benchmark .[benchmark sbs]
 
 /*
-Étape par étape, on a amélioré notre image Docker pour la rendre éligible à la production.
+Étape par étape, on a construit notre image Docker pour la rendre éligible à la production.
 
 Dofigen Hub: ne refaite pas tout de zéro
 

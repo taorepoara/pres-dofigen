@@ -12,6 +12,16 @@
 - Définition de la commande de lancement: `java -jar app.jar`
 
 
+
+
+Image un peu lourde: 280 Mo
+Temps de build et rebuild de 25 sec (sans le pull des images)
+Contient un JDK
+
+Mais user non root
+
+
+
 ```bash
 cp ../v1/dofigen.yml ./dofigen.yml
 ```
