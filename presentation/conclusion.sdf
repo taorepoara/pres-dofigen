@@ -30,15 +30,15 @@ Trouvez une configuration Dofigen pour votre cas d'usage !
 
 <a class="marge" href="https://github.com/lenra-io/dofigen">github.com/lenra-io/dofigen</a>
 
-- Indiquer les améliorations possibles
-- Faciliter les builds multi-plateformes
-- Faire de Dofigen une syntaxe native pour Docker
+- Pointer des améliorations possibles
+- Builds multi-plateformes
+- Syntaxe native pour Docker
 
 /*
 Dofigen est un projet open source dont le code est sur GitHub.
 
 On souhaite ajouter de nouvelles fonctionnalités, comme
-- indiquer les améliorations notamment pour les bonnes pratiques
+- Mettre en avant des améliorations notamment pour les bonnes pratiques
 - faciliter les builds multi-plateformes
 - et faire de Dofigen une syntaxe native pour Docker
 
