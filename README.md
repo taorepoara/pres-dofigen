@@ -25,6 +25,7 @@ cd project/
 rm -f dofigen.lock Dockerfile .dockerignore
 echo "" > dofigen.yml
 code dofigen.yml -r
+export PS1="\\033[1;34m\\W\\033[0m\\$ "
 clear
 ```
 
