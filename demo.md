@@ -79,18 +79,3 @@ Temps rebuild: 25s -> 5s (/5)
 ```bash
 cp ../v3/dofigen.yml ./dofigen.yml
 ```
-
-
-
-
-## Dofigen Hub
-
-https://github.com/lenra-io/dofigen-hub
-
-
-Configuration d'image Java: `https://raw.githubusercontent.com/lenra-io/dofigen-hub/main/jvm/maven-jar.image.yml`
-
-
-```bash
-cp ../v4/dofigen.yml ./dofigen.yml
-```

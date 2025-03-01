@@ -1,21 +1,16 @@
 
-## Les Dockerfile 🤔 .[steps sbs]
+## Les Dockerfiles 🤔 .[steps sbs]
 
-
-// En tant que dev, on a beaucoup de sujets à traiter, les tests, la sécurité, la performance, la lisibilité, la maintenabilité, etc.
-// Et on a pas forcément envie de passer du temps à comprendre comment fonctionne la création de conteneurs pour déployer nos projets.
-// J'ai créé Dofigen pour essayer de simplifier la création de Dockerfile et de rendre cette tâche plus accessible.
+<img src="./park-and-recs-ron-swanson.gif" style="width: 50vw;" />
 
 /*
-dev: beaucoup de sujets à traiter: tests, sécurité, performance, maintenabilité, etc.
-pas le temps et l'envie de comprendre les conteneurs
+dev: beaucoup de sujets à traiter: tests, sécurité, performance, etc.
+Maintenant, on doit aussi savoir créer des images Docker
 
-Sondage
-
-Pour ceux qui ne savent pas
-le layer: un niveau de construction d'une image. équivalent d'un commit dans un git
-un stage: une image temporaire dans laquelle on peut faire des traîtement dont le résultat pourra être copié dans l'image finale
+Next: Sondage
 */
+
+## Petit sondage 📊 .[steps sbs]
 
 Le dev à tout faire doit-il maîtriser l'écriture de Dockerfile ?
 
@@ -25,6 +20,10 @@ Le dev à tout faire doit-il maîtriser l'écriture de Dockerfile ?
 
 
 /*
+Pour ceux qui ne savent pas
+le layer: un niveau de construction d'une image. équivalent d'un commit dans un git
+un stage: une image temporaire dans laquelle on peut faire des traîtement dont le résultat pourra être copié dans l'image finale
+
 Next: Problèmes que j'ai rencontrés avec les Dockerfile
 Syntaxe des Dockerfile
 */
@@ -36,12 +35,9 @@ Quand tu décides de faire ton premier Dockerfile:
 <img src="./bored-sigh.gif" style="width: 50vw;" />
 
 /*
-syntaxe en commandes
+syntaxe en commandes: pas envie, on dirait du Cobol
 
-- pas envie, on dirait du Cobol
-- pas simple d'analyser ou de modifier un Dockerfile via un script
-
-Next: Dockerfile => long et complexe
+Next: Pour comprendre, je vais lire un Dockerfile existant
 */
 
 ## Les Dockerfile sont souvent longs et complexes 📜
@@ -51,11 +47,7 @@ Quand tu lis un Dockerfile pour la première fois:
 <img src="./theoffice-michael-scott.gif" style="width: 50vw;" />
 
 /*
-beaucoup de layers
-
-les stages pas toujours bien séparés
-
-ces notions pas bien comprise
+beaucoup de layers + les stages pas toujours bien séparés
 
 On s'y perd
 
@@ -69,8 +61,7 @@ Quand tu envoies en prod:
 <img src="./silicon-valley-fire.gif" style="width: 50vw;" />
 
 /*
-root par défaut sur la plus part des images
-.dockerignore fonctionnent à l'inverse selon moi
+La plus part des images Docker ne sont pas sécurisées par défaut
 
 Next: Comment Dofigen tente de répondre à ces problèmes
 */

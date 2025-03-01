@@ -5,6 +5,7 @@
 
 ### La présentation
 
+Ne pas laisser la fenêtre de l'IDE en plein écran.
 Dans le terminal de l'IDE:
 
 ```console
@@ -15,10 +16,7 @@ docker pull maven:3.9-eclipse-temurin-17-alpine
 docker pull eclipse-temurin:17-jre-alpine
 
 # Lancer la présentation dans un nouveau terminal
-gnome-terminal -- bunx slidesk@2.10.1 presentation -n -t
-
-# Ouvrir la doc de démo
-code demo.md -r -g demo.md:1
+gnome-terminal -- bunx slidesk@2.11.3 presentation -n -t
 
 # Initialiser le projet pour la démo
 cd project/
@@ -26,6 +24,9 @@ rm -f dofigen.lock Dockerfile .dockerignore
 echo "" > dofigen.yml
 code dofigen.yml -r
 export PS1="\\033[1;34m\\W\\033[0m\\$ "
+window="$(xdotool search --name "Visual Studio Code")"
+xdotool windowsize "$window" 960 540
+xdotool windowmove "$window" 0 0
 clear
 ```
 
@@ -37,13 +38,13 @@ Ouvrir la présentation:
 #### Edition avec modifs en live
 
 ```console
-bunx slidesk@2.10.1 presentation -w
+bunx slidesk@2.11.3 presentation -w
 ```
 
 #### Générer un backup des slides
 
 ```console
-bunx slidesk@2.10.1 presentation -s backup
+bunx slidesk@2.11.3 presentation -s backup
 ```
 
 
