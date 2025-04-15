@@ -47,7 +47,7 @@ Next: Screen
 - Création depuis l'image: eclipse-temurin:17-jdk
 - définir le répertoire de travail: /app
 - copie des sources
-- En tant que `root`:
+- En tant que `root`, `run`:
 -> Génération du jar: ./mvnw package -DskipTests
 -> copie du jar généré en dehors du dossier de build: mv target/*.jar app.jar
 - Définition de la commande de lancement: [java, -jar, app.jar]
@@ -179,7 +179,7 @@ Trouvez une configuration Dofigen et adaptez-la à votre cas d'usage !
     ```
 
 /*
-
+Trouver un modèle correspondant à votre projet et étendez le pour l'adapter à vos besoins.
 
 Next: Dofigen: un projet Open Source
 */

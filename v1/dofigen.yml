@@ -5,7 +5,6 @@ workdir: /app
 copy: "."
 root:
   run:
-    - ls -al
     # Compilation du projet en un JAR
     - ./mvnw package -DskipTests
     # Déplacement du JAR généré
