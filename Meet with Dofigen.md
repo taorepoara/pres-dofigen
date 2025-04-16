@@ -1,0 +1,72 @@
+# Meet with Dofigen
+
+Dofigen est un outil qui permet aux développeurs de simplifier la création de conteneurs pour leurs projets.
+Il est entièrement OpenSource, tout comme la majorité de nos projets internes.
+
+## Pourquoi créer un projet en OpenSource ?
+
+En tant que chef d'entreprise, je n'étais pas fan d'ouvrir le code source des développements de notre équipe:
+
+- Je pensais que ça allait nous faire perdre du temps
+- J'avais peur des critiques
+- Je pensais qu'on allait nous voler nos idées (comme si elles étaient si géniales que ça)
+
+Pourtant au quotidien, nous utilisons des outils OpenSource, et nous en sommes très contents.
+Et du point de vue philosophique, je suis convaincu que l'OpenSource est un modèle de développement qui a fait ses preuves et qu'il favorise la collaboration et l'innovation.
+
+Il y a quelques années, notamment grâce à l'accompagnement de NAOS (Nouvelle Aquitaine Open Source), je me suis interrogé sur mes craintes en prenant du recul:
+
+- Perte de temps ? Est-ce que définir une structure de travail et de documentation claire pour que quelqu'un qui découvre nos projets les comprenne facilement, c'est une perte de temps pour une entreprise ?
+		Non, au contraire, c'est un gain de temps pour nous quand on fait passer un membre de l'entreprise sur un projet qu'il ne connait pas ou quand on accueille un nouveau membre.
+- Les critiques ? Est-ce que le fait de recevoir des retours sur notre code, c'est une mauvaise chose ?
+		Non, au contraire, ça nous permet de progresser et d'améliorer la qualité de notre code.
+		Ca permet au contraire de se confronter aux critiques des potentiels utilisateurs de votre projet.
+		Pour rappel, on projet est là pour répondre à un besoin d'utilisateurs, pas à une envie de développeurs.
+- Voler nos idées ? Est-ce que le fait de partager notre code source, c'est prendre un risque ?
+		Là je vous répondrais: ça dépend.
+		Si votre idée et son implémentation sont extraordinnaires, que personne ne peut les reproduire avec du reverse ingineering et que vous tenez votre marché grâce à ça, alors oui, c'est un risque.
+		Sinon, je ne pense pas que ce soit un risque.
+		Il existe des licences qui vous permettent de protéger votre code source et de le partager sans que les autres puissent l'utiliser à des fins commerciales.
+		C'est même une opportunité pour créer une communauté qui pourra vous aider à améliorer votre projet.
+
+## ⚖️ Quelle licence choisir ?
+
+Le choix de la licence est crucial, mais il n'y a pas de réponse unique.
+Nous choisissons les licences de nos projets en fonction du contexte dans lequel les outils seront utilisés et leur importance pour l'entreprise.
+
+Nous utilisons principalement deux licences:
+- **MIT**: pour les projets qui ne sont pas critiques pour l'entreprise et qui peuvent être modifiés sans risque: c'est le cas de Dofigen.
+		Elle permet à n'importe qui (particulier, entreprise, etc.) de l'utiliser, de le modifier et de le redistribuer sans aucune restriction.
+- **GPLv3** ou **AGPL**: pour les projets qui sont critiques pour l'entreprise, notamment pour les revenus qui permettent de payer les salaires.
+		Elle permet à n'importe qui (particulier, entreprise, etc.) de l'utiliser, de le modifier et de le redistribuer, mais elle impose que les modifications soient également mises à disposition sous la même licence.
+		Cela permet de protéger le code source et d'éviter que des entreprises ne l'utilisent à des fins commerciales sans contribuer au projet.
+		La différence entre GPLv3 et AGPL est que la GPLv3 ne s'applique pas aux logiciels qui sont utilisés en tant que service (SaaS), alors que l'AGPL s'applique également à ces cas-là.
+
+## 📏 Normes et bonnes pratiques pour un projet open source ?
+
+Là encore il n'y a pas qu'une seule façon de faire, mais il faut trouver celle qui convient le mieux à votre projet et surtout à vous parce que vous allez devoir l'appliquer au quotidien.
+
+### Documentation
+
+Il faut accompagner les contributeurs dans ses différentes démarches de votre projet:
+- **README**: il doit être clair et précis, il doit expliquer le fonctionnement du projet, comment l'installer, comment l'utiliser et comment contribuer.
+- **ISSUES**: il faut définir des modèles de tickets par type pour s'assurer que vous avez toutes les informations nécessaires pour traiter le ticket.
+		Par exemple, pour un bug, il faut savoir comment le reproduire, quel est le contexte d'utilisation (version de l'app, navigateur, etc).
+- **PR**: il faut définir des modèles de PR pour s'assurer que ce que vous attendez d'un contributeur soit bien suivi.
+		Il faut également mettre en place une CI pour automatiser certaines vérifications: l'application compile, les tests passent, etc.
+
+### Tests
+Comme pour beaucoup de projets les tests automatisés sont importants, mais là d'autant plus qu'il y a des contributeurs qui ne connaissent pas forcément le code source et qui peuvent casser le code existant sans le vouloir.
+
+Les tests vont les aider à comprendre le fonctionnement du code et à s'assurer qu'ils ne vont rien casser.
+
+Dites-vous qu'un contributeur qui arrive sur un projet sans tests a peu de chances d'en rajouter, alors que s'il a des exemples de TU et qu'il a juste à en adapter quelques uns pour sa modification, il y a de fortes chances qu'il le fasse.
+
+## 📢 Faire connaître votre projet ?
+
+Là dessus, je ne suis pas un expert...
+
+Même si je suis convaincu du bien fondé de nos outils et qu'ils seraient utiles à beaucoup de monde, je suis tellement dégouté de ce monde de pubs dans lequel on est que je reste réticent à en parler trop régulièrement.
+
+Mais du coup, je le fais dans des conditions qui correspondent à mes valeurs: j'en parle principalement lors de conférences, comme aujourd'hui et sur les réseaux sociaux, car je fait des lives pendant lesquels je développe les projets.
+Les personnes qui sont présentes, sont donc intéressées par le sujet et viennent de leur plein gré.

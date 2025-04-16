@@ -70,11 +70,15 @@ Next: Présentation de Dofigen
 
 Dofigen = Dockerfile generator
 
-Objectif: Pour que les devs créaient des images Docker pour la prod
+### Objectif
+
+Pour que les devs créaient des conteneurs
+
+élligibles à la production
 
 
 /*
-Pour Lenra, on voulait une solution simple pour permetttre aux devs de créer des images Docker pour la prod.
+Pour Lenra, on voulait une solution simple pour permettre aux devs de créer des images Docker pour la prod.
 J'ai créé Dofigen comme un projet à part et qui est utilisé comme dépendance du CLI de Lenra.
 
 Dofigen: Docker file generator
