@@ -1,0 +1,9 @@
+{
+  "addScripts": ["./plugins/steps/steps.js"],
+  "addSpeakerScripts": ["./plugins/steps/stepsNotes.js"],
+  "addStyles": ["./plugins/steps/steps.css"],
+  "addSpeakerStyles": ["./plugins/steps/stepsNotes.css"],
+  "onSlideChange": "window.slidesk.prepareSteps();",
+  "onSpeakerViewSlideChange": "window.slidesk.prepareSteps();",
+  "files": ["steps.js", "steps.css", "stepsNotes.js", "stepsNotes.css"]
+}

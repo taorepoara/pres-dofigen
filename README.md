@@ -53,3 +53,12 @@ bunx slidesk@2.11.3 presentation -s backup
 ```console
 ./mvnw spring-boot:run
 ```
+
+
+## Meet with Dofigen
+
+Pour lancer la présentation:
+
+```console
+bunx slidesk@2.11.3 meet-with -w -n
+```
