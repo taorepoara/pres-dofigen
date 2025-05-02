@@ -1,29 +1,4 @@
 
-## Benchmark .[benchmark sbs]
-
-/*
-Étape par étape, on a construit notre image Docker pour la rendre éligible à la production.
-
-Dofigen Hub: ne refaite pas tout de zéro
-
-Next: Il y a certainement d'autres étapes pour l'améliorer.
-Dofigen: Open Source
-*/
-
-| Démo           | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
-|----------------|-------------|-----------|-------------|---------------|---------|------------|
-| v1 Base        | 280 Mo      | 3s 🚀     | 25s         | =             | 1000 😷 | Non        |
-| v2 Tiny Image  | 78 Mo 🪶    | 3s 🚀     | 25s         | =             | 1000 😷 | Non        |
-| v3 Fast Build  | 78 Mo 🪶    | 3s 🚀     | 25s         | 5s ⌛         | 1000 😷 | Oui 🛡️     |
-
-<div class="step" markdown>
-### Dofigen Hub
-
-Trouvez une configuration Dofigen pour votre cas d'usage !
-
-</div>
-
-
 ## Dofigen: un projet Open Source
 
 <img class="qrcode" src="./qrcode-github.png" />
@@ -55,6 +30,8 @@ Merci pour votre attention.
 
 N'hésitez pas à me faire des retours sur l'OpenFeedback
 
+Merci à Gouz pour Slidesk, à Geoffrey pour son accompagnement et à Julien pour m'avoir donné ma chance via Crafts Records.
+
 Des questions ?
 
 
@@ -65,3 +42,11 @@ Des questions ?
 Dev depuis 2007 et CTO de Lenra
 
 <img class="qrcode" src="./qrcode-openfeedback.svg" />
+
+### Merci à
+
+<ul>
+<li><small>Gouz pour l'outil Slidesk</small></li>
+<li><small>Geofrey GRAVEAUD pour son accompagnement</small></li>
+<li><small>Julien TOPÇU pour m'avoir donné ma chance via Crafts Records</small></li>
+</ul>

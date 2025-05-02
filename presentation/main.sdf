@@ -5,22 +5,184 @@ add_scripts: main.js
 
 # 🐋 Simplifiez la conteneurisation de vos idées !
 
-// Attention à la présentation (éviter de se présenter en tant que CTO pour pas que ça soit pris comme un produit qu'on veut vendre)
-
-
-// Bonjour à tous, je m'appelle Thomas, je suis développeur depuis plus de 15 ans aucours desquels j'ai souvent galéré pour mettre mes projets en ligne.
-// Aujourd'hui, on va voir ensemble comment créer des images Docker pour envoyer vos projets en production en respectant les bonnes pratiques grâce à Dofigen.
-
 /*
 - Présentation: dev depuis 15 ans, galère pour mettre en ligne
 - Objectif: créer des images Docker pour envoyer vos projets en production en respectant les bonnes pratiques grâce à Dofigen
+
+Next: dev => beaucoup de sujets à traiter: tests, sécurité, performance, etc.
 */
 
 !include(intro.sdf)
 
 //@ < 04:00
 
-!include(demo.sdf)
+## Démonstration .[steps]
+
+Comprendre par l'exemple
+
+### Objectifs
+
+- 🪶: Image légère
+- 🚀: Démarrage & rebuild rapide
+- 🛡️: Non-root & sans JDK
+
+/*
+Projet SpringBoot de base
+133 dépendances pour un total de 45 Mo
+
+> Objectifs
+🪶: Image légère pour la charger plus rapidement
+🚀: Démarrage rapide et Rebuild rapide pour ne pas perdre de temps lors du développement
+🛡️: Non-root et Sans JDK pour limiter les possibilitées d'attaques
+
+Next: Screen
+*/
+
+## Écran .[hide-title]
+
+<video>Si tu vois ça c'est que ça marche pas</video>
+
+/*
+# Dofigen de base:
+- Création depuis l'image: eclipse-temurin:17-jdk
+- définir le répertoire de travail: /app
+- copie des sources
+- En tant que `root`, `run`:
+-> Génération du jar: ./mvnw package -DskipTests
+-> copie du jar généré en dehors du dossier de build: mv target/*.jar app.jar
+- Définition de la commande de lancement: [java, -jar, app.jar]
+
+Lourde: 280 Mo; Temps rebuild de 25 sec; Contient un JDK
+Mais => Non root
+
+
+!Problem!
+cp ../v1/dofigen.yml ./dofigen.yml
+
+
+dofigen gen
+code Dockerfile -r
+
+
+docker build -t demo:1 .
+
+!lancement!
+docker run --rm -dt --name demo -p 8081:8080 demo:1
+
+curl http://localhost:8081/greeting && echo ""
+
+docker stop demo
+
+
+
+
+
+# Réduction de la taille de l'image
+- Création d'un builder "package":
+-> utilisation d'une image Maven Alpine: maven:3.9-eclipse-temurin-17-alpine
+-> utilisation de la commande `mvn` au lieu du wrapper
+- utilisation d'une image JRE et Alpine: eclipse-temurin:17-jre-alpine
+- copy du jar généré
+
+Taille: 280 Mo -> 78 Mo (/3.5)
+
+!Problem!
+cp ../v2/dofigen.yml ./dofigen.yml
+
+
+
+
+
+# Optimisation du temps de build
+- restriction du contexte au `pom.xml` et au dossier `src/main`
+- cache des dépendances Maven `/root/.m2` et du cache de build `target`. Obligation de déplacer le JAR généré en dehors du dossier de build.
+
+Temps rebuild: 25s -> 5s (/5)
+
+!Problem!
+cp ../v3/dofigen.yml ./dofigen.yml
+
+
+
+*/
+
+## Benchmark .[benchmark]
+
+//@ < 12:00
+
+/*
+Étape par étape, on a construit notre image Docker pour la rendre éligible à la production.
+
+Next: Ok, mais il y a quand même une syntax à apprendre... Dofigen Hub
+*/
+
+| Démo           | Taille      | 1er accès | Tps build   | Tps rebuild   | User    | Sans JDK		|
+|----------------|-------------|-----------|-------------|---------------|---------|------------|
+| v1 Base        | 280 Mo      | 3s 🚀     | 25s         | =             | 1000 😷 | Non        |
+| v2 Tiny Image  | 78 Mo 🪶    | 3s 🚀     | 25s         | =             | 1000 😷 | Non        |
+| v3 Fast Build  | 78 Mo 🪶    | 3s 🚀     | 25s         | 5s ⌛         | 1000 😷 | Oui 🛡️     |
+
+
+## Dofigen Hub .[steps hub]
+
+Trouvez une configuration Dofigen et adaptez-la à votre cas d'usage !
+
+- Utilisez des confs existantes
+
+    ```yaml
+    extend:
+      - https://hub.dofigen.io/jvm/maven-jar.image.yml
+    copy:
+      +:
+        content: |
+          #!/bin/sh
+          java -jar app.jar
+        target: /run.sh
+        chmod: 555
+    cmd: [/run.sh]
+    ```
+- Ne partez pas de zéro
+
+    ```yaml
+    context:
+    - /pom.xml
+    - /src/main/
+    builders:
+      maven-package:
+        fromImage: maven:3-eclipse-temurin-17-alpine
+        workdir: /app
+        root:
+          run:
+          - mvn package -DskipTests
+          - mv target/*.jar /tmp/app.jar
+          cache:
+          - target: /root/.m2
+          - target: target
+          bind:
+          - target: pom.xml
+            source: pom.xml
+          - target: src
+            source: src
+    fromImage: eclipse-temurin:17-jre-alpine
+    workdir: /app
+    copy:
+    - fromBuilder: maven-package
+      paths:
+      - /tmp/app.jar
+      target: app.jar
+    - content:|
+        #!/bin/sh
+        java -jar app.jar
+      target: /run.sh
+      chmod: 555
+    cmd: [/run.sh]
+    ```
+
+/*
+Trouver un modèle correspondant à votre projet et étendez le pour l'adapter à vos besoins.
+
+Next: Dofigen: un projet Open Source
+*/
 
 //@ < 14:00
 
